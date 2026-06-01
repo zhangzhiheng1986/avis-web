@@ -1,8 +1,13 @@
 import { defineConfig } from 'vitepress'
 
+// GitHub Pages base path — set via BASE env var, e.g. BASE=/avis-web/
+// Defaults to '/' for local dev and user/org pages
+const base = process.env.BASE || '/'
+
 export default defineConfig({
   lang: 'zh-CN',
   title: 'Avis - 航空航天阀门研发智库',
+  base,
   description: '全球航空航天阀门领域知识体系的活的大厦',
   lastUpdated: true,
   cleanUrls: true,

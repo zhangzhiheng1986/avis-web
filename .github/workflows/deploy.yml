@@ -1,0 +1,50 @@
+name: Deploy VitePress Site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+# Allow only one concurrent deployment
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          cd web
+          npm ci
+
+      - name: Build VitePress
+        run: |
+          cd web
+          npx vitepress build
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+          # Set BASE to your repo name for project-site GitHub Pages.
+          # For user/org site (username.github.io), set BASE="/".
+          BASE: /${{ github.event.repository.name }}/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: web/.vitepress/dist
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: 'deploy: ${{ github.sha }}'
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
