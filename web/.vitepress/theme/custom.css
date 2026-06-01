@@ -1,0 +1,155 @@
+/* ============================================
+   Avis VitePress 自定义样式
+   品牌色：航空航天蓝 #1a56db
+   辅助色：深空灰 #1e293b / 月白 #f8fafc
+   ============================================ */
+
+:root {
+  --vp-c-brand-1: #1a56db;
+  --vp-c-brand-2: #2563eb;
+  --vp-c-brand-3: #3b82f6;
+  --vp-c-brand-soft: rgba(26, 86, 219, 0.14);
+
+  --vp-c-tip-1: #1a56db;
+  --vp-c-tip-2: #2563eb;
+  --vp-c-tip-3: #3b82f6;
+  --vp-c-tip-soft: rgba(26, 86, 219, 0.14);
+
+  --vp-font-family-base: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+/* Hero 区域增强 */
+.VPHero .name {
+  background: linear-gradient(135deg, #1a56db 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.VPHero .tagline {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: var(--vp-c-text-2);
+}
+
+/* 卡片样式 */
+.avis-card {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.avis-card:hover {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 4px 24px rgba(26, 86, 219, 0.1);
+}
+
+/* 统计数据展示 */
+.avis-stats {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.avis-stat-item {
+  text-align: center;
+  min-width: 120px;
+}
+
+.avis-stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--vp-c-brand-1);
+  line-height: 1.2;
+}
+
+.avis-stat-label {
+  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.25rem;
+}
+
+/* 时间线样式 */
+.avis-timeline {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 2px solid var(--vp-c-divider);
+  margin: 2rem 0;
+}
+
+.avis-timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.avis-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.45rem;
+  top: 0.4rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--vp-c-brand-1);
+  border: 2px solid var(--vp-c-bg);
+}
+
+.avis-timeline-version {
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+}
+
+/* CTA 按钮增强 */
+.avis-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.avis-cta-primary {
+  background: var(--vp-c-brand-1);
+  color: #fff;
+}
+
+.avis-cta-primary:hover {
+  background: var(--vp-c-brand-2);
+  text-decoration: none;
+  color: #fff;
+}
+
+.avis-cta-secondary {
+  border: 2px solid var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
+.avis-cta-secondary:hover {
+  background: var(--vp-c-brand-soft);
+  text-decoration: none;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .avis-stats {
+    gap: 1rem;
+  }
+
+  .avis-stat-number {
+    font-size: 1.75rem;
+  }
+
+  .avis-stat-item {
+    min-width: 80px;
+  }
+}
