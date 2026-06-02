@@ -51,6 +51,7 @@ export default defineConfig({
       { text: '知识图谱', link: '/knowledge-graph' },
       { text: '术语词典', link: '/glossary' },
       { text: '版本历史', link: '/changelog' },
+      { text: '系统架构', link: '/architecture' },
       { text: '贡献', link: '/contributing' }
     ],
 
@@ -92,7 +93,12 @@ export default defineConfig({
             { text: '第23章 无损检测', link: '/guide/part2/chapter-23' },
             { text: '第24章 增材制造——从粉末到飞行阀门的全链条', link: '/guide/part2/chapter-24' },
             { text: '第25章 氢氧发动机阀门', link: '/guide/part2/chapter-25' },
-            { text: '第26章 可重复使用火箭阀门', link: '/guide/part2/chapter-26' }
+            { text: '第26章 可重复使用火箭阀门', link: '/guide/part2/chapter-26' },
+            { text: '第63章 航空发动机阀门系统', link: '/guide/part2/chapter-63' },
+            { text: '第64章 飞机燃油系统阀门', link: '/guide/part2/chapter-64' },
+            { text: '第65章 飞机液压系统阀门', link: '/guide/part2/chapter-65' },
+            { text: '第66章 飞机气动与环境控制系统阀门', link: '/guide/part2/chapter-66' },
+            { text: '第68章 航空阀门设计特殊考虑', link: '/guide/part2/chapter-68' }
           ]
         },
         {
@@ -129,7 +135,9 @@ export default defineConfig({
             { text: '第49章 常用仿真工具与软件生态', link: '/guide/part4/chapter-49' },
             { text: '第50章 材料与标准数据库', link: '/guide/part4/chapter-50' },
             { text: '第51章 术语表与缩略语', link: '/guide/part4/chapter-51' },
-            { text: '第52章 参考文献与引用来源', link: '/guide/part4/chapter-52' }
+            { text: '第52章 参考文献与引用来源', link: '/guide/part4/chapter-52' },
+            { text: '第67章 航空阀门适航认证与标准体系', link: '/guide/part4/chapter-67' },
+            { text: '第69章 航空阀门故障分析与案例研究', link: '/guide/part4/chapter-69' }
           ]
         },
         {
@@ -206,6 +214,7 @@ export default defineConfig({
 
   markdown: {
     math: true,
+    mermaid: true,
     lineNumbers: true,
     image: {
       lazyLoading: true

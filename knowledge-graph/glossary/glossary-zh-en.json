@@ -1,0 +1,789 @@
+{
+  "meta": {
+    "version": "5.1",
+    "count": 125,
+    "description": "Avis航空航天阀门中英术语对照表 — 涵盖航天+航空核心术语与标准缩写"
+  },
+  "entries": [
+    {
+      "zh": "燃油计量组件",
+      "en": "Fuel Metering Unit",
+      "abbr": "FMU",
+      "domain": "aviation"
+    },
+    {
+      "zh": "液压机械组件",
+      "en": "Hydro-Mechanical Unit",
+      "abbr": "HMU",
+      "domain": "aviation"
+    },
+    {
+      "zh": "全权限数字发动机控制",
+      "en": "Full Authority Digital Engine Control",
+      "abbr": "FADEC",
+      "domain": "aviation"
+    },
+    {
+      "zh": "燃油计量阀",
+      "en": "Fuel Metering Valve",
+      "abbr": "FMV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "可调静叶作动系统",
+      "en": "Variable Stator Vane Actuation",
+      "abbr": "VSV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "可调放气阀",
+      "en": "Variable Bleed Valve",
+      "abbr": "VBV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "过渡放气阀",
+      "en": "Transient Bleed Valve",
+      "abbr": "TBV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "主动间隙控制阀",
+      "en": "Active Clearance Control Valve",
+      "abbr": "ACC",
+      "domain": "aviation"
+    },
+    {
+      "zh": "涡轮冷却空气阀",
+      "en": "Turbine Cooling Air Valve",
+      "abbr": "TCV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "加力燃油分配阀",
+      "en": "Afterburner Fuel Distribution Valve",
+      "abbr": "AFDV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "燃油分配阀",
+      "en": "Fuel Distribution Valve",
+      "abbr": "FDV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "燃油喷嘴切换阀",
+      "en": "Fuel Nozzle Switching Valve",
+      "abbr": "FNSV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "喘振裕度",
+      "en": "Surge Margin",
+      "abbr": "SM",
+      "domain": "aviation"
+    },
+    {
+      "zh": "氮气惰化系统",
+      "en": "Nitrogen Generation System",
+      "abbr": "NGS",
+      "domain": "aviation"
+    },
+    {
+      "zh": "富氮空气分配阀",
+      "en": "Nitrogen-Enriched Air Distribution Valve",
+      "abbr": "NEADV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "交输供油阀",
+      "en": "Crossfeed Valve",
+      "abbr": "CFV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "应急放油阀",
+      "en": "Fuel Jettison Valve",
+      "abbr": "FJV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "燃油关断阀(防火)",
+      "en": "Fire Shutoff Valve",
+      "abbr": "FSOV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "防火墙截止阀",
+      "en": "Firewall Shutoff Valve",
+      "abbr": "FWSOV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "燃油增压泵",
+      "en": "Fuel Boost Pump",
+      "abbr": "FBP",
+      "domain": "aviation"
+    },
+    {
+      "zh": "引射泵",
+      "en": "Ejector / Jet Pump",
+      "abbr": "JP",
+      "domain": "aviation"
+    },
+    {
+      "zh": "空中加油受油阀",
+      "en": "Aerial Refueling Receiver Valve",
+      "abbr": "ARRV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "电液伺服阀",
+      "en": "Electro-Hydraulic Servo Valve",
+      "abbr": "EHSV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "直驱阀",
+      "en": "Direct Drive Valve",
+      "abbr": "DDV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "刹车伺服阀",
+      "en": "Brake Servo Valve",
+      "abbr": "BSV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "防滑刹车控制阀",
+      "en": "Anti-Skid Control Valve",
+      "abbr": "ASCV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "起落架收放控制阀",
+      "en": "Landing Gear Control Valve",
+      "abbr": "LGCV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "起落架紧急放下阀",
+      "en": "Landing Gear Emergency Extension Valve",
+      "abbr": "LGEEV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "前轮转弯控制阀",
+      "en": "Nose Wheel Steering Control Valve",
+      "abbr": "NWSCV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "压力补偿/优先阀",
+      "en": "Pressure Compensator / Priority Valve",
+      "abbr": "PPV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "液压保险",
+      "en": "Hydraulic Fuse",
+      "abbr": "HF",
+      "domain": "aviation"
+    },
+    {
+      "zh": "电静液作动器",
+      "en": "Electro-Hydrostatic Actuator",
+      "abbr": "EHA",
+      "domain": "aviation"
+    },
+    {
+      "zh": "机电作动器",
+      "en": "Electro-Mechanical Actuator",
+      "abbr": "EMA",
+      "domain": "aviation"
+    },
+    {
+      "zh": "线传飞控",
+      "en": "Fly-by-Wire",
+      "abbr": "FBW",
+      "domain": "aviation"
+    },
+    {
+      "zh": "环境控制系统",
+      "en": "Environmental Control System",
+      "abbr": "ECS",
+      "domain": "aviation"
+    },
+    {
+      "zh": "辅助动力装置",
+      "en": "Auxiliary Power Unit",
+      "abbr": "APU",
+      "domain": "aviation"
+    },
+    {
+      "zh": "压力调节关断阀",
+      "en": "Pressure Regulating and Shutoff Valve",
+      "abbr": "PRSOV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "高压引气阀",
+      "en": "High Pressure Valve",
+      "abbr": "HPV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "流量控制阀",
+      "en": "Flow Control Valve",
+      "abbr": "FCV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "配平空气阀",
+      "en": "Trim Air Valve",
+      "abbr": "TAV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "座舱外流阀",
+      "en": "Cabin Outflow Valve",
+      "abbr": "OFV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "机翼防冰引气阀",
+      "en": "Wing Anti-Ice Valve",
+      "abbr": "WAIV",
+      "domain": "aviation"
+    },
+    {
+      "zh": "座舱压力控制",
+      "en": "Cabin Pressure Control",
+      "abbr": "CPC",
+      "domain": "aviation"
+    },
+    {
+      "zh": "涡轮冷却器",
+      "en": "Air Cycle Machine / Turbofan",
+      "abbr": "ACM",
+      "domain": "aviation"
+    },
+    {
+      "zh": "美国联邦航空条例",
+      "en": "Federal Aviation Regulations",
+      "abbr": "FAR",
+      "domain": "aviation"
+    },
+    {
+      "zh": "欧洲航空安全局审定规范",
+      "en": "Certification Specifications",
+      "abbr": "CS",
+      "domain": "aviation"
+    },
+    {
+      "zh": "中国民用航空规章",
+      "en": "China Civil Aviation Regulations",
+      "abbr": "CCAR",
+      "domain": "aviation"
+    },
+    {
+      "zh": "国际汽车工程师学会",
+      "en": "SAE International",
+      "abbr": "SAE",
+      "domain": "aviation"
+    },
+    {
+      "zh": "航空推荐实践",
+      "en": "Aerospace Recommended Practice",
+      "abbr": "ARP",
+      "domain": "aviation"
+    },
+    {
+      "zh": "飞行器系统研制过程",
+      "en": "Development of Civil Aircraft and Systems",
+      "abbr": "ARP 4754A",
+      "domain": "aviation"
+    },
+    {
+      "zh": "民用航空系统安全性评估过程",
+      "en": "Safety Assessment Process on Civil Airborne Systems",
+      "abbr": "ARP 4761",
+      "domain": "aviation"
+    },
+    {
+      "zh": "机载设备环境条件与试验程序",
+      "en": "Environmental Conditions and Test Procedures for Airborne Equipment",
+      "abbr": "DO-160",
+      "domain": "aviation"
+    },
+    {
+      "zh": "维修指导小组-第三任务",
+      "en": "Maintenance Steering Group-3",
+      "abbr": "MSG-3",
+      "domain": "aviation"
+    },
+    {
+      "zh": "美国航空管理局",
+      "en": "Federal Aviation Administration",
+      "abbr": "FAA",
+      "domain": "aviation"
+    },
+    {
+      "zh": "欧洲航空安全局",
+      "en": "European Union Aviation Safety Agency",
+      "abbr": "EASA",
+      "domain": "aviation"
+    },
+    {
+      "zh": "中国民用航空局",
+      "en": "Civil Aviation Administration of China",
+      "abbr": "CAAC",
+      "domain": "aviation"
+    },
+    {
+      "zh": "高强辐射场",
+      "en": "High Intensity Radiated Fields",
+      "abbr": "HIRF",
+      "domain": "aviation"
+    },
+    {
+      "zh": "发展保证水平",
+      "en": "Development Assurance Level",
+      "abbr": "DAL",
+      "domain": "aviation"
+    },
+    {
+      "zh": "液压油洁净度",
+      "en": "Aerospace Standard 4059",
+      "abbr": "AS 4059",
+      "domain": "aviation"
+    },
+    {
+      "zh": "美国军用标准",
+      "en": "United States Military Standard",
+      "abbr": "MIL",
+      "domain": "common"
+    },
+    {
+      "zh": "国家军用标准",
+      "en": "Guojun Biaozhun (Chinese Military Standard)",
+      "abbr": "GJB",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "飞机燃油系统阀门规范",
+      "en": "Detail Specification for Aircraft Fuel System Valves",
+      "abbr": "MIL-DTL-83833",
+      "domain": "aviation"
+    },
+    {
+      "zh": "航空液压系统阀门",
+      "en": "Military Specification Hydraulic Valves Aircraft",
+      "abbr": "MIL-H-5440",
+      "domain": "aviation"
+    },
+    {
+      "zh": "液发阀门通用规范",
+      "en": "General Specification for Liquid Rocket Engine Valves",
+      "abbr": "GJB 20484",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "高周疲劳",
+      "en": "High Cycle Fatigue",
+      "abbr": "HCF",
+      "domain": "common"
+    },
+    {
+      "zh": "低周疲劳",
+      "en": "Low Cycle Fatigue",
+      "abbr": "LCF",
+      "domain": "common"
+    },
+    {
+      "zh": "故障模式影响与危害性分析",
+      "en": "Failure Mode Effects and Criticality Analysis",
+      "abbr": "FMECA",
+      "domain": "common"
+    },
+    {
+      "zh": "故障树分析",
+      "en": "Fault Tree Analysis",
+      "abbr": "FTA",
+      "domain": "common"
+    },
+    {
+      "zh": "故障模式与影响分析",
+      "en": "Failure Mode and Effects Analysis",
+      "abbr": "FMEA",
+      "domain": "common"
+    },
+    {
+      "zh": "状态监测与视情维修",
+      "en": "Condition-Based Maintenance",
+      "abbr": "CBM",
+      "domain": "aviation"
+    },
+    {
+      "zh": "健康与使用监测系统",
+      "en": "Health and Usage Monitoring System",
+      "abbr": "HUMS",
+      "domain": "aviation"
+    },
+    {
+      "zh": "加速寿命试验",
+      "en": "Accelerated Life Test",
+      "abbr": "ALT",
+      "domain": "common"
+    },
+    {
+      "zh": "高加速寿命试验",
+      "en": "Highly Accelerated Life Test",
+      "abbr": "HALT",
+      "domain": "common"
+    },
+    {
+      "zh": "高加速应力筛选",
+      "en": "Highly Accelerated Stress Screen",
+      "abbr": "HASS",
+      "domain": "common"
+    },
+    {
+      "zh": "合格鉴定试验",
+      "en": "Qualification Test",
+      "abbr": "QT",
+      "domain": "common"
+    },
+    {
+      "zh": "验收试验",
+      "en": "Acceptance Test Procedure",
+      "abbr": "ATP",
+      "domain": "common"
+    },
+    {
+      "zh": "S形曲线(沃勒曲线)",
+      "en": "S-N Curve (Wöhler Curve)",
+      "abbr": "S-N",
+      "domain": "common"
+    },
+    {
+      "zh": "雨流计数法",
+      "en": "Rainflow Counting Method",
+      "abbr": "RFC",
+      "domain": "common"
+    },
+    {
+      "zh": "共因失效",
+      "en": "Common Cause Failure",
+      "abbr": "CCF",
+      "domain": "common"
+    },
+    {
+      "zh": "概率风险评估",
+      "en": "Probabilistic Risk Assessment",
+      "abbr": "PRA",
+      "domain": "common"
+    },
+    {
+      "zh": "系统安全评估",
+      "en": "System Safety Assessment",
+      "abbr": "SSA",
+      "domain": "aviation"
+    },
+    {
+      "zh": "聚四氟乙烯",
+      "en": "Polytetrafluoroethylene",
+      "abbr": "PTFE",
+      "domain": "common"
+    },
+    {
+      "zh": "聚醚醚酮",
+      "en": "Polyether Ether Ketone",
+      "abbr": "PEEK",
+      "domain": "common"
+    },
+    {
+      "zh": "全氟醚橡胶",
+      "en": "Perfluoroelastomer",
+      "abbr": "FFKM",
+      "domain": "common"
+    },
+    {
+      "zh": "氟橡胶",
+      "en": "Fluoroelastomer",
+      "abbr": "FKM",
+      "domain": "common"
+    },
+    {
+      "zh": "聚三氟氯乙烯",
+      "en": "Polychlorotrifluoroethylene",
+      "abbr": "PCTFE",
+      "domain": "common"
+    },
+    {
+      "zh": "钛合金TC4",
+      "en": "Titanium Alloy Ti-6Al-4V",
+      "abbr": "TC4",
+      "domain": "common"
+    },
+    {
+      "zh": "高温合金Inconel 718",
+      "en": "Nickel-Chromium Superalloy Inconel 718",
+      "abbr": "IN718",
+      "domain": "common"
+    },
+    {
+      "zh": "陶瓷基复合材料",
+      "en": "Ceramic Matrix Composite",
+      "abbr": "CMC",
+      "domain": "common"
+    },
+    {
+      "zh": "氢环境脆化",
+      "en": "Hydrogen Environment Embrittlement",
+      "abbr": "HEE",
+      "domain": "common"
+    },
+    {
+      "zh": "应力腐蚀开裂",
+      "en": "Stress Corrosion Cracking",
+      "abbr": "SCC",
+      "domain": "common"
+    },
+    {
+      "zh": "热膨胀系数",
+      "en": "Coefficient of Thermal Expansion",
+      "abbr": "CTE",
+      "domain": "common"
+    },
+    {
+      "zh": "玻璃化转变温度",
+      "en": "Glass Transition Temperature",
+      "abbr": "Tg",
+      "domain": "common"
+    },
+    {
+      "zh": "断裂韧性",
+      "en": "Fracture Toughness",
+      "abbr": "KIC",
+      "domain": "common"
+    },
+    {
+      "zh": "主推进剂阀",
+      "en": "Main Propellant Valve",
+      "abbr": "MPV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "推进剂隔离阀",
+      "en": "Propellant Isolation Valve",
+      "abbr": "PIV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "火工/电爆阀",
+      "en": "Pyrotechnic/Explosive Valve",
+      "abbr": "PV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "推力调节阀",
+      "en": "Thrust Control Valve",
+      "abbr": "TCV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "混合比调节阀",
+      "en": "Mixture Ratio Control Valve",
+      "abbr": "MRCV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "预燃室氧化剂阀",
+      "en": "Preburner Oxidizer Valve",
+      "abbr": "PBOV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "预燃室燃料阀",
+      "en": "Preburner Fuel Valve",
+      "abbr": "PBFV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "冷气推进阀",
+      "en": "Cold Gas Thruster Valve",
+      "abbr": "CGTV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "姿态控制推力器阀门",
+      "en": "Attitude Control Thruster Valve",
+      "abbr": "ACTV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "级间分离阀",
+      "en": "Stage Separation Valve",
+      "abbr": "SSV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "推力矢量控制伺服阀",
+      "en": "Thrust Vector Control Servo Valve",
+      "abbr": "TVCSV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "电爆推进阀",
+      "en": "Electro-Explosive Propellant Valve",
+      "abbr": "EEPV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "燃气发生器阀",
+      "en": "Gas Generator Valve",
+      "abbr": "GGV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "波纹管密封阀",
+      "en": "Bellows Sealed Valve",
+      "abbr": "BSV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "自锁阀",
+      "en": "Latching Valve",
+      "abbr": "LV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "深冷球阀",
+      "en": "Cryogenic Ball Valve",
+      "abbr": "CBV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "贮箱安全阀",
+      "en": "Tank Safety/Relief Valve",
+      "abbr": "TRV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "贮箱出口阀",
+      "en": "Tank Outlet Valve",
+      "abbr": "TOV",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "美国宇航局标准",
+      "en": "NASA Standard",
+      "abbr": "NASA-STD",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "欧洲空间标准化合作组织",
+      "en": "European Cooperation for Space Standardization",
+      "abbr": "ECSS",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "美国航空航天学会",
+      "en": "American Institute of Aeronautics and Astronautics",
+      "abbr": "AIAA",
+      "domain": "aerospace"
+    },
+    {
+      "zh": "流量系数(英制)",
+      "en": "Flow Coefficient (US)",
+      "abbr": "Cv",
+      "domain": "common"
+    },
+    {
+      "zh": "流量系数(米制)",
+      "en": "Flow Coefficient (Metric)",
+      "abbr": "Kv",
+      "domain": "common"
+    },
+    {
+      "zh": "雷诺数",
+      "en": "Reynolds Number",
+      "abbr": "Re",
+      "domain": "common"
+    },
+    {
+      "zh": "截止阀",
+      "en": "Globe Valve",
+      "abbr": "GLV",
+      "domain": "common"
+    },
+    {
+      "zh": "球阀",
+      "en": "Ball Valve",
+      "abbr": "BV",
+      "domain": "common"
+    },
+    {
+      "zh": "蝶阀",
+      "en": "Butterfly Valve",
+      "abbr": "BFV",
+      "domain": "common"
+    },
+    {
+      "zh": "闸阀",
+      "en": "Gate Valve",
+      "abbr": "GV",
+      "domain": "common"
+    },
+    {
+      "zh": "针阀",
+      "en": "Needle Valve",
+      "abbr": "NV",
+      "domain": "common"
+    },
+    {
+      "zh": "旋塞阀",
+      "en": "Plug Valve",
+      "abbr": "PLV",
+      "domain": "common"
+    },
+    {
+      "zh": "隔膜阀",
+      "en": "Diaphragm Valve",
+      "abbr": "DV",
+      "domain": "common"
+    },
+    {
+      "zh": "梭阀",
+      "en": "Shuttle Valve",
+      "abbr": "SV",
+      "domain": "common"
+    },
+    {
+      "zh": "增材制造",
+      "en": "Additive Manufacturing",
+      "abbr": "AM",
+      "domain": "common"
+    },
+    {
+      "zh": "基于模型的系统工程",
+      "en": "Model-Based Systems Engineering",
+      "abbr": "MBSE",
+      "domain": "common"
+    },
+    {
+      "zh": "技术就绪度",
+      "en": "Technology Readiness Level",
+      "abbr": "TRL",
+      "domain": "common"
+    },
+    {
+      "zh": "国际系统工程委员会",
+      "en": "International Council on Systems Engineering",
+      "abbr": "INCOSE",
+      "domain": "common"
+    }
+  ]
+}

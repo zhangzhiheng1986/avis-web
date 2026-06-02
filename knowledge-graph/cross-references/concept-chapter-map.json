@@ -1,0 +1,624 @@
+{
+  "meta": {
+    "version": "5.1",
+    "count": 80,
+    "description": "Avis概念-章映射表 — 核心概念到相关章节的交叉引用"
+  },
+  "mappings": [
+    {
+      "concept": "阀门分类体系",
+      "domain": "common",
+      "chapters": [
+        5,
+        6
+      ]
+    },
+    {
+      "concept": "流体力学基础",
+      "domain": "common",
+      "chapters": [
+        2
+      ]
+    },
+    {
+      "concept": "热力学基础",
+      "domain": "common",
+      "chapters": [
+        3
+      ]
+    },
+    {
+      "concept": "材料科学基础",
+      "domain": "common",
+      "chapters": [
+        4,
+        50
+      ]
+    },
+    {
+      "concept": "阀门流量特性",
+      "domain": "common",
+      "chapters": [
+        2
+      ]
+    },
+    {
+      "concept": "临界压比与阻塞流",
+      "domain": "common",
+      "chapters": [
+        2
+      ]
+    },
+    {
+      "concept": "气蚀与水锤",
+      "domain": "common",
+      "chapters": [
+        2
+      ]
+    },
+    {
+      "concept": "电磁驱动阀",
+      "domain": "common",
+      "chapters": [
+        6,
+        13,
+        61
+      ]
+    },
+    {
+      "concept": "气动驱动阀",
+      "domain": "common",
+      "chapters": [
+        6,
+        14
+      ]
+    },
+    {
+      "concept": "液压驱动阀",
+      "domain": "common",
+      "chapters": [
+        6,
+        14,
+        65
+      ]
+    },
+    {
+      "concept": "电机驱动阀",
+      "domain": "common",
+      "chapters": [
+        6,
+        15
+      ]
+    },
+    {
+      "concept": "火工/电爆驱动阀",
+      "domain": "aerospace",
+      "chapters": [
+        6,
+        16
+      ]
+    },
+    {
+      "concept": "压电驱动阀",
+      "domain": "common",
+      "chapters": [
+        6,
+        53
+      ]
+    },
+    {
+      "concept": "形状记忆合金(SMA)驱动",
+      "domain": "common",
+      "chapters": [
+        6,
+        53
+      ]
+    },
+    {
+      "concept": "阀门静力学与结构分析",
+      "domain": "common",
+      "chapters": [
+        7,
+        11
+      ]
+    },
+    {
+      "concept": "阀门动力学分析",
+      "domain": "common",
+      "chapters": [
+        8,
+        10
+      ]
+    },
+    {
+      "concept": "密封工程设计",
+      "domain": "common",
+      "chapters": [
+        9,
+        12
+      ]
+    },
+    {
+      "concept": "极端环境密封技术",
+      "domain": "common",
+      "chapters": [
+        9
+      ]
+    },
+    {
+      "concept": "金属密封技术",
+      "domain": "common",
+      "chapters": [
+        4,
+        9
+      ]
+    },
+    {
+      "concept": "非金属密封材料",
+      "domain": "common",
+      "chapters": [
+        4,
+        50
+      ]
+    },
+    {
+      "concept": "波纹管密封阀",
+      "domain": "common",
+      "chapters": [
+        6,
+        9
+      ]
+    },
+    {
+      "concept": "CFD计算流体力学",
+      "domain": "common",
+      "chapters": [
+        11
+      ]
+    },
+    {
+      "concept": "阀门热分析",
+      "domain": "common",
+      "chapters": [
+        13
+      ]
+    },
+    {
+      "concept": "阀门流致振动",
+      "domain": "common",
+      "chapters": [
+        12
+      ]
+    },
+    {
+      "concept": "阀门接口设计",
+      "domain": "common",
+      "chapters": [
+        18
+      ]
+    },
+    {
+      "concept": "氢氧发动机阀门",
+      "domain": "aerospace",
+      "chapters": [
+        25
+      ]
+    },
+    {
+      "concept": "可重复使用火箭阀门",
+      "domain": "aerospace",
+      "chapters": [
+        26
+      ]
+    },
+    {
+      "concept": "燃油计量阀(FMU/HMU)",
+      "domain": "aviation",
+      "chapters": [
+        63
+      ]
+    },
+    {
+      "concept": "FADEC电调燃油计量阀",
+      "domain": "aviation",
+      "chapters": [
+        63
+      ]
+    },
+    {
+      "concept": "VSV可调静叶作动阀",
+      "domain": "aviation",
+      "chapters": [
+        63
+      ]
+    },
+    {
+      "concept": "VBV/TBV压气机放气阀",
+      "domain": "aviation",
+      "chapters": [
+        63
+      ]
+    },
+    {
+      "concept": "ACC主动间隙控制阀",
+      "domain": "aviation",
+      "chapters": [
+        63
+      ]
+    },
+    {
+      "concept": "TCV涡轮冷却阀",
+      "domain": "aviation",
+      "chapters": [
+        63
+      ]
+    },
+    {
+      "concept": "加力燃烧室燃油阀",
+      "domain": "aviation",
+      "chapters": [
+        63
+      ]
+    },
+    {
+      "concept": "发动机滑油系统阀门",
+      "domain": "aviation",
+      "chapters": [
+        63
+      ]
+    },
+    {
+      "concept": "燃油增压关断阀",
+      "domain": "aviation",
+      "chapters": [
+        64
+      ]
+    },
+    {
+      "concept": "交输供油阀",
+      "domain": "aviation",
+      "chapters": [
+        64
+      ]
+    },
+    {
+      "concept": "空中加油受油阀",
+      "domain": "aviation",
+      "chapters": [
+        64
+      ]
+    },
+    {
+      "concept": "NGS惰化阀",
+      "domain": "aviation",
+      "chapters": [
+        64
+      ]
+    },
+    {
+      "concept": "应急放油阀",
+      "domain": "aviation",
+      "chapters": [
+        64
+      ]
+    },
+    {
+      "concept": "燃油防火关断阀",
+      "domain": "aviation",
+      "chapters": [
+        64,
+        68
+      ]
+    },
+    {
+      "concept": "电液伺服阀(EHSV)",
+      "domain": "aviation",
+      "chapters": [
+        13,
+        65
+      ]
+    },
+    {
+      "concept": "直驱阀(DDV)",
+      "domain": "aviation",
+      "chapters": [
+        13,
+        65
+      ]
+    },
+    {
+      "concept": "压力补偿优先阀",
+      "domain": "aviation",
+      "chapters": [
+        65
+      ]
+    },
+    {
+      "concept": "起落架收放控制阀",
+      "domain": "aviation",
+      "chapters": [
+        65
+      ]
+    },
+    {
+      "concept": "刹车伺服阀/防滑阀",
+      "domain": "aviation",
+      "chapters": [
+        65
+      ]
+    },
+    {
+      "concept": "液压保险",
+      "domain": "aviation",
+      "chapters": [
+        65
+      ]
+    },
+    {
+      "concept": "PRSOV引气调节阀",
+      "domain": "aviation",
+      "chapters": [
+        66
+      ]
+    },
+    {
+      "concept": "FCV流量控制阀",
+      "domain": "aviation",
+      "chapters": [
+        66
+      ]
+    },
+    {
+      "concept": "TAV配平空气阀",
+      "domain": "aviation",
+      "chapters": [
+        66
+      ]
+    },
+    {
+      "concept": "座舱外流阀(OFV)",
+      "domain": "aviation",
+      "chapters": [
+        66
+      ]
+    },
+    {
+      "concept": "机翼防冰引气阀",
+      "domain": "aviation",
+      "chapters": [
+        66
+      ]
+    },
+    {
+      "concept": "APU引气/燃油阀",
+      "domain": "aviation",
+      "chapters": [
+        66
+      ]
+    },
+    {
+      "concept": "精密加工与特种工艺",
+      "domain": "common",
+      "chapters": [
+        18,
+        29
+      ]
+    },
+    {
+      "concept": "焊接与钎焊技术",
+      "domain": "common",
+      "chapters": [
+        29
+      ]
+    },
+    {
+      "concept": "热处理与材料性能调控",
+      "domain": "common",
+      "chapters": [
+        30
+      ]
+    },
+    {
+      "concept": "表面工程",
+      "domain": "common",
+      "chapters": [
+        19
+      ]
+    },
+    {
+      "concept": "增材制造阀门",
+      "domain": "common",
+      "chapters": [
+        24,
+        68
+      ]
+    },
+    {
+      "concept": "洁净与污染控制",
+      "domain": "common",
+      "chapters": [
+        21,
+        31
+      ]
+    },
+    {
+      "concept": "装配工艺",
+      "domain": "common",
+      "chapters": [
+        22,
+        31
+      ]
+    },
+    {
+      "concept": "无损检测",
+      "domain": "common",
+      "chapters": [
+        23
+      ]
+    },
+    {
+      "concept": "FAR/CS/CCAR适航体系",
+      "domain": "aviation",
+      "chapters": [
+        67
+      ]
+    },
+    {
+      "concept": "DO-160环境试验",
+      "domain": "aviation",
+      "chapters": [
+        67
+      ]
+    },
+    {
+      "concept": "ARP 4754A系统研制过程",
+      "domain": "aviation",
+      "chapters": [
+        67
+      ]
+    },
+    {
+      "concept": "MSG-3维修分析",
+      "domain": "aviation",
+      "chapters": [
+        68
+      ]
+    },
+    {
+      "concept": "国际标准体系(MIL/NASA/ECSS)",
+      "domain": "aerospace",
+      "chapters": [
+        33,
+        36
+      ]
+    },
+    {
+      "concept": "中国标准体系(GJB/QJ)",
+      "domain": "aerospace",
+      "chapters": [
+        36,
+        48
+      ]
+    },
+    {
+      "concept": "航空阀门重量优化",
+      "domain": "aviation",
+      "chapters": [
+        68
+      ]
+    },
+    {
+      "concept": "航空阀门防火设计(1100°C/15min)",
+      "domain": "aviation",
+      "chapters": [
+        68
+      ]
+    },
+    {
+      "concept": "闪电与HIRF防护",
+      "domain": "aviation",
+      "chapters": [
+        67,
+        68
+      ]
+    },
+    {
+      "concept": "高周疲劳(HCF)与低周疲劳(LCF)",
+      "domain": "aviation",
+      "chapters": [
+        68
+      ]
+    },
+    {
+      "concept": "航空阀门振动分析",
+      "domain": "aviation",
+      "chapters": [
+        68
+      ]
+    },
+    {
+      "concept": "系统工程方法(INCOSE SE)",
+      "domain": "common",
+      "chapters": [
+        37,
+        10
+      ]
+    },
+    {
+      "concept": "FMEA/FMECA分析",
+      "domain": "common",
+      "chapters": [
+        47,
+        69
+      ]
+    },
+    {
+      "concept": "FTA故障树分析",
+      "domain": "common",
+      "chapters": [
+        47
+      ]
+    },
+    {
+      "concept": "可靠性工程",
+      "domain": "common",
+      "chapters": [
+        32,
+        48,
+        55
+      ]
+    },
+    {
+      "concept": "维修性与保障性工程",
+      "domain": "common",
+      "chapters": [
+        34
+      ]
+    },
+    {
+      "concept": "数字孪生与智能运维",
+      "domain": "common",
+      "chapters": [
+        41
+      ]
+    },
+    {
+      "concept": "协和号4590燃油阀事故",
+      "domain": "aviation",
+      "chapters": [
+        69
+      ]
+    },
+    {
+      "concept": "PRSOV故障座舱失压",
+      "domain": "aviation",
+      "chapters": [
+        69
+      ]
+    },
+    {
+      "concept": "B787锂电池防火阀事故",
+      "domain": "aviation",
+      "chapters": [
+        69
+      ]
+    },
+    {
+      "concept": "钛火风险与氧兼容性",
+      "domain": "common",
+      "chapters": [
+        4,
+        5,
+        46
+      ]
+    },
+    {
+      "concept": "氢环境脆化(HEE)",
+      "domain": "common",
+      "chapters": [
+        4,
+        46
+      ]
+    }
+  ]
+}

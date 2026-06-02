@@ -1,0 +1,653 @@
+{
+  "meta": {
+    "version": "5.1",
+    "created": "2026-06-02",
+    "description": "Avis航空航天阀门知识图谱本体论",
+    "source": "E:\\Avis-System\\core\\V5.0\\ 全部72章"
+  },
+  "classification": {
+    "domain": {
+      "spaceflight": {
+        "label": "航天阀门",
+        "subcategories": [
+          "运载火箭发动机阀门",
+          "上面级/航天器推进阀门",
+          "深空探测器阀门",
+          "地面发射支持阀门"
+        ]
+      },
+      "aviation": {
+        "label": "航空阀门",
+        "subcategories": [
+          "发动机阀门",
+          "燃油系统阀门",
+          "液压系统阀门",
+          "ECS/防冰阀门",
+          "APU阀门"
+        ]
+      }
+    },
+    "function": {
+      "shutoff": {
+        "label": "截止阀",
+        "description": "二位二通全开/全关",
+        "typical_applications": [
+          "发动机推进剂隔离阀",
+          "贮箱出口阀",
+          "级间分离隔离阀"
+        ]
+      },
+      "throttling": {
+        "label": "调节阀",
+        "description": "连续调节流通面积",
+        "typical_applications": [
+          "推力深度节流",
+          "混合比精细调节"
+        ]
+      },
+      "check": {
+        "label": "单向阀",
+        "description": "正向开启/反向自密封",
+        "typical_applications": [
+          "泵出口防倒流",
+          "增压单向通道"
+        ]
+      },
+      "relief": {
+        "label": "安全阀/泄压阀",
+        "description": "超压自动开启泄压",
+        "typical_applications": [
+          "贮箱/管路超压保护"
+        ]
+      },
+      "diverter": {
+        "label": "换向/分配阀",
+        "description": "多出口选择通道",
+        "typical_applications": [
+          "多推力器选择",
+          "冗余切换"
+        ]
+      },
+      "proportional": {
+        "label": "比例阀",
+        "description": "输出与电信号成比例",
+        "typical_applications": [
+          "防滑刹车",
+          "前轮转弯"
+        ]
+      },
+      "servo": {
+        "label": "伺服阀(EHSV)",
+        "description": "闭环电液转换,高动态",
+        "typical_applications": [
+          "飞控作动",
+          "推力矢量控制"
+        ]
+      },
+      "fill_drain": {
+        "label": "充填/泄放阀",
+        "description": "地面加注/泄出",
+        "typical_applications": [
+          "推进剂加注"
+        ]
+      },
+      "pyrovalve": {
+        "label": "火工/电爆阀",
+        "description": "一次爆轰驱动永久切断",
+        "typical_applications": [
+          "卫星推进剂永久隔离"
+        ]
+      },
+      "overflow": {
+        "label": "溢流阀",
+        "description": "维持上游压力恒定",
+        "typical_applications": [
+          "泵旁路压力补偿"
+        ]
+      },
+      "shuttle": {
+        "label": "梭阀",
+        "description": "双输入选择高压侧输出",
+        "typical_applications": [
+          "冗余压力源自动切换"
+        ]
+      }
+    },
+    "actuation": {
+      "direct_solenoid": {
+        "label": "直动电磁",
+        "response": "5-20ms",
+        "force_range": "≤50N",
+        "typical_size": "DN1-DN10"
+      },
+      "pilot_solenoid": {
+        "label": "先导电磁",
+        "response": "10-50ms",
+        "force_range": "大(介质放大)",
+        "typical_size": "DN6-DN50"
+      },
+      "latching_solenoid": {
+        "label": "自锁电磁",
+        "response": "10-50ms",
+        "standby_power": "0W",
+        "typical_size": "DN1-DN25"
+      },
+      "motor": {
+        "label": "电机驱动(BLDC/步进)",
+        "response": "50-500ms",
+        "force_range": "大推力/大行程",
+        "typical_size": "DN10-DN200"
+      },
+      "pneumatic": {
+        "label": "气动(GHe/GN2)",
+        "response": "50-200ms",
+        "force_range": "极大",
+        "typical_size": "DN6-DN300"
+      },
+      "hydraulic": {
+        "label": "液压(3000/5000psi)",
+        "response": "10-50ms",
+        "force_range": "最高功重比",
+        "typical_size": "DN10-DN200"
+      },
+      "ehsv": {
+        "label": "电液伺服阀(EHSV)",
+        "response": "5-20ms",
+        "bandwidth": ">150Hz",
+        "typical_size": "DN3-DN25"
+      },
+      "ddv": {
+        "label": "直驱阀(DDV)",
+        "response": "10-30ms",
+        "advantage": "抗污染,取消先导级",
+        "typical_size": "DN3-DN15"
+      },
+      "eha": {
+        "label": "电静液作动器(EHA)",
+        "response": "20-100ms",
+        "advantage": "Power-by-Wire",
+        "typical_size": "DN6-DN50"
+      },
+      "ema": {
+        "label": "机电作动器(EMA)",
+        "response": "50-200ms",
+        "advantage": "无液压油",
+        "typical_size": "DN6-DN100"
+      },
+      "pyrotechnic": {
+        "label": "火工驱动",
+        "response": "2-5ms",
+        "characteristic": "一次性/绝对密封"
+      },
+      "sma": {
+        "label": "形状记忆合金(SMA)",
+        "response": "100-500ms",
+        "advantage": "简易轻量",
+        "typical_size": "DN1-DN6"
+      },
+      "piezoelectric": {
+        "label": "压电驱动",
+        "response": "0.1-1ms",
+        "advantage": "极高速纳米精度",
+        "typical_size": "DN0.5-DN3"
+      },
+      "manual": {
+        "label": "手动",
+        "characteristic": "终极冗余/应急"
+      }
+    },
+    "medium": {
+      "liquid_propellant": [
+        "LOX(-183°C)",
+        "LH2(-253°C)",
+        "RP-1",
+        "LCH4(-162°C)",
+        "NTO",
+        "MMH",
+        "肼(N2H4)",
+        "UDMH"
+      ],
+      "liquid_aircraft": [
+        "Jet-A/JP-8",
+        "航空汽油",
+        "液压油(MIL-PRF-83282/5606)",
+        "滑油(MIL-PRF-23699)",
+        "冷却液(EGW)"
+      ],
+      "gas_oxidizer": [
+        "GOX",
+        "压缩空气"
+      ],
+      "gas_pressurant": [
+        "GHe(高压氦)",
+        "GN2(高压氮)"
+      ],
+      "gas_other": [
+        "发动机引气(200-650°C)",
+        "APU引气",
+        "惰性气体(N2/Ar)",
+        "NGS富氮空气"
+      ],
+      "multiphase": [
+        "两相流(推进剂沸腾)",
+        "气液混合"
+      ]
+    },
+    "environment": {
+      "room_temp": {
+        "label": "常温",
+        "range": "-50°C ~ +150°C"
+      },
+      "cryogenic_lh2": {
+        "label": "极低温液氢",
+        "range": "20K(-253°C)"
+      },
+      "cryogenic_lox": {
+        "label": "低温液氧",
+        "range": "90K(-183°C)"
+      },
+      "high_temp": {
+        "label": "高温",
+        "range": ">800°C",
+        "applications": [
+          "预燃室燃气",
+          "涡轮排气"
+        ]
+      },
+      "high_pressure": {
+        "label": "高压",
+        "range": ">35MPa",
+        "applications": [
+          "RS-25 HPFTP/HPOTP出口"
+        ]
+      }
+    },
+    "application_system": {
+      "propulsion": {
+        "label": "推进系统",
+        "valves": [
+          "主推进剂截止阀",
+          "预燃室阀门",
+          "推力调节阀"
+        ]
+      },
+      "fuel": {
+        "label": "燃油系统",
+        "valves": [
+          "增压关断阀",
+          "交输阀",
+          "应急放油阀",
+          "NGS阀"
+        ]
+      },
+      "hydraulic": {
+        "label": "液压系统",
+        "valves": [
+          "EHSV",
+          "DDV",
+          "优先阀",
+          "刹车伺服阀"
+        ]
+      },
+      "ecs": {
+        "label": "ECS/空调",
+        "valves": [
+          "PRSOV",
+          "FCV",
+          "外流阀",
+          "防冰阀"
+        ]
+      },
+      "apu": {
+        "label": "APU",
+        "valves": [
+          "APU引气阀",
+          "燃油关断阀",
+          "滑油冷却阀"
+        ]
+      },
+      "auxiliary": {
+        "label": "辅助系统",
+        "valves": [
+          "加注/泄出阀",
+          "脐带板阀"
+        ]
+      }
+    }
+  },
+  "failure_modes": {
+    "sticking": {
+      "label": "卡滞/堵塞",
+      "causes": [
+        "污染颗粒嵌入导向间隙",
+        "热变形缩小间隙",
+        "真空冷焊",
+        "推进剂沉积物粘结"
+      ],
+      "severity": "9-10",
+      "detection": "响应时间延长→BIT可检测"
+    },
+    "leakage_internal": {
+      "label": "内泄漏超标",
+      "causes": [
+        "密封面磨损/划伤",
+        "阀座装配预紧力不足",
+        "密封材料退化",
+        "低温O-ring收缩失弹",
+        "颗粒微泄"
+      ],
+      "severity": "5-9",
+      "detection": "氦检漏→但低温泄漏地面可能不出现"
+    },
+    "leakage_external": {
+      "label": "外泄漏",
+      "causes": [
+        "阀体铸造缺陷扩展",
+        "密封垫片老化",
+        "安装螺栓松弛",
+        "波纹管疲劳断裂",
+        "焊接微裂纹"
+      ],
+      "severity": "8-10",
+      "detection": "氦检漏(灵敏度1×10⁻⁶ sccs)"
+    },
+    "fracture": {
+      "label": "断裂",
+      "causes": [
+        "弹簧疲劳断裂",
+        "氢环境脆化(HEE)",
+        "应力腐蚀开裂(SCC)",
+        "过载断裂"
+      ],
+      "severity": "9-10",
+      "key_materials_risk": {
+        "17-4PH H900": "氢脆敏感",
+        "高强度Inconel718": "HEE风险(HRC≥40)"
+      }
+    },
+    "corrosion": {
+      "label": "腐蚀",
+      "causes": [
+        "NTO+水汽→硝酸",
+        "推进剂杂质化学侵蚀",
+        "电偶腐蚀"
+      ],
+      "severity": "5-8"
+    },
+    "wear": {
+      "label": "磨损",
+      "causes": [
+        "阀芯-导向面往复摩擦",
+        "密封面微动磨损",
+        "颗粒研磨"
+      ],
+      "severity": "3-6"
+    },
+    "electrical": {
+      "label": "电气故障",
+      "causes": [
+        "线圈绝缘击穿(匝间短路)",
+        "连接器腐蚀",
+        "电缆断路",
+        "电磁干扰(EMI)误触发"
+      ],
+      "severity": "7-9"
+    },
+    "thermal": {
+      "label": "热失效",
+      "causes": [
+        "线圈过热→绝缘退化",
+        "电机真空散热不足",
+        "密封件高温老化",
+        "低温玻璃化"
+      ],
+      "severity": "6-8"
+    }
+  },
+  "materials": {
+    "titanium_alloys": {
+      "label": "钛合金",
+      "grades": {
+        "TC4(Ti-6Al-4V)": {
+          "density": "4.43g/cm³",
+          "tensile": "≥895MPa",
+          "applications": [
+            "航空阀门壳体",
+            "轻量化结构"
+          ],
+          "restrictions": [
+            "禁止用于LOX/GOX环境(钛火风险)"
+          ]
+        },
+        "TC11": {
+          "density": "4.48g/cm³",
+          "tensile": "≥1030MPa",
+          "applications": [
+            "高压阀体",
+            "高温部件"
+          ]
+        },
+        "TC18": {
+          "density": "4.62g/cm³",
+          "tensile": "≥1080MPa",
+          "applications": [
+            "高强度承压件"
+          ]
+        }
+      }
+    },
+    "stainless_steels": {
+      "label": "不锈钢",
+      "grades": {
+        "304/304L": {
+          "applications": [
+            "一般介质阀体"
+          ],
+          "temperature": "-196°C ~ +800°C"
+        },
+        "316/316L": {
+          "applications": [
+            "耐腐蚀阀体",
+            "推进剂阀门"
+          ],
+          "advantage": "Mo提升耐点蚀"
+        },
+        "17-4PH": {
+          "note": "H900态禁用于高压H₂环境",
+          "solution": "使用H1150/H1150M态或换Inconel718"
+        },
+        "15-5PH": {
+          "applications": [
+            "高强度航空阀门壳体"
+          ]
+        }
+      }
+    },
+    "superalloys": {
+      "label": "高温合金",
+      "grades": {
+        "Inconel 718": {
+          "max_temp": "~700°C",
+          "applications": [
+            "高温阀门",
+            "预燃室阀",
+            "氢阀(HRC≤34)"
+          ],
+          "strength": "≥1240MPa"
+        },
+        "Inconel 625": {
+          "max_temp": "~980°C",
+          "applications": [
+            "抗氧化/耐腐蚀高温阀"
+          ],
+          "strength": "≥830MPa"
+        },
+        "Hastelloy X": {
+          "max_temp": "~1200°C",
+          "applications": [
+            "推力室燃气阀"
+          ]
+        },
+        "Haynes 230": {
+          "max_temp": ">1000°C",
+          "applications": [
+            "极高温阀体/阀芯"
+          ]
+        }
+      }
+    },
+    "aluminum": {
+      "label": "铝合金",
+      "grades": {
+        "7075-T7351": {
+          "applications": [
+            "航空液压阀壳体(轻量化)"
+          ],
+          "restrictions": [
+            "禁用于NTO/MON环境"
+          ]
+        },
+        "6061-T6": {
+          "applications": [
+            "低压阀体",
+            "气路阀"
+          ]
+        }
+      }
+    },
+    "seals_polymer": {
+      "label": "非金属密封",
+      "grades": {
+        "PTFE": {
+          "temp_range": "-200°C ~ +260°C",
+          "restrictions": [
+            "液氢20K下收缩2.1%变脆→不适用",
+            "低温用PCTFE(Kel-F)替代"
+          ]
+        },
+        "PEEK": {
+          "temp_range": "-60°C ~ +250°C",
+          "advantage": "高强度/耐化学/抗辐射"
+        },
+        "FKM(氟橡胶)": {
+          "temp_range": "-20°C ~ +200°C",
+          "restrictions": [
+            "低于Tg=-20°C失去弹性→低温禁用"
+          ]
+        },
+        "FFKM(全氟醚橡胶)": {
+          "temp_range": "-30°C ~ +300°C",
+          "advantage": "宽温域/化学惰性"
+        },
+        "PCTFE(Kel-F)": {
+          "applications": [
+            "液氢/液氧低温密封替代PTFE"
+          ]
+        }
+      }
+    },
+    "seals_metal": {
+      "label": "金属密封",
+      "types": [
+        "金属C形环",
+        "金属O形环",
+        "Wills Ring",
+        "金属波纹管密封(零外漏)"
+      ],
+      "applications": [
+        "深冷推进剂",
+        "高温(>300°C)",
+        "核辐射环境"
+      ]
+    },
+    "ceramic_composite": {
+      "label": "陶瓷/复合材料",
+      "types": [
+        "CMC(陶瓷基复合材料)",
+        "SiC/SiC",
+        "C/C",
+        "Al2O3陶瓷阀芯"
+      ],
+      "applications": [
+        "极高温(>1200°C)阀门"
+      ]
+    }
+  },
+  "standards": {
+    "space": {
+      "MIL": [
+        "MIL-DTL-83833(飞机燃油阀)",
+        "MIL-H-5440(航空液压阀)",
+        "MIL-STD-1522A(承压系统安全)",
+        "MIL-STD-1540D(航天器测试)"
+      ],
+      "NASA": [
+        "NASA-STD-5012(推进系统强度寿命)",
+        "NASA-STD-6001B(材料燃烧/除气/兼容)",
+        "NASA-STD-8729.1A(PRA程序)",
+        "NASA SPEC 5022A(火工阀)"
+      ],
+      "ECSS": [
+        "ECSS-E-ST-35C(推进系统)",
+        "ECSS-Q-ST-30-02C(FMEA/FMECA)",
+        "ECSS-Q-ST-70-36C(材料兼容性)"
+      ],
+      "GJB": [
+        "GJB 20484-2018(液发阀门通用规范)",
+        "GJB 548B-2017(微电子器件试验)"
+      ],
+      "AIAA": [
+        "AIAA S-080-2018(航天器推进系统)",
+        "AIAA S-117A-2016(SE方法)"
+      ]
+    },
+    "aviation": {
+      "FAR_CS_CCAR": [
+        "§25.1001(燃油系统/放油阀)",
+        "§25.1181-1195(防火/关断阀)",
+        "§25.1309(设备安全性)",
+        "§25.1431(电子设备)",
+        "§33.28(发动机控制系统)",
+        "§33.91(发动机校准)"
+      ],
+      "SAE": [
+        "SAE ARP 4754A/B(航空系统开发)",
+        "SAE AS 4059(液压油洁净度)",
+        "SAE ARP 490/4490(电液伺服阀)",
+        "SAE ARP4835A(航空阀门设计)",
+        "SAE ARP4761(安全评估)",
+        "SAE J1739(FMEA)"
+      ],
+      "DO_160": [
+        "Section 4(温度/高度)",
+        "Section 8(振动)",
+        "Section 10(防水)",
+        "Section 12(砂尘)",
+        "Section 19/22(HIRF/雷电)",
+        "Section 26(防火)"
+      ],
+      "MSG_3": [
+        "MSG-3系统/动力装置分析逻辑(维修间隔确定)"
+      ]
+    },
+    "general": {
+      "ISO": [
+        "ISO 7368(二通插装阀)",
+        "ISO 5598(液压词汇)",
+        "ISO 6358(气动流量特性)",
+        "ISO/IEC 15288(系统生命周期)"
+      ],
+      "ASME": [
+        "ASME B16.34(阀门法兰螺纹焊接端)",
+        "ASME BPVC(锅炉压力容器规范)"
+      ],
+      "API": [
+        "API 6D(管线阀规范)"
+      ],
+      "GB": [
+        "GB/T 12224-2015(钢制阀门一般要求)",
+        "GB/T 32808-2016(阀门型号编制)"
+      ]
+    }
+  }
+}

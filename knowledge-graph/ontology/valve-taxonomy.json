@@ -1,0 +1,822 @@
+{
+  "meta": {
+    "version": "5.1",
+    "created": "2026-06-03",
+    "description": "Avis航空航天阀门分类学本体论 — 6个一级维度、30个二级分类",
+    "source": "Avis V5.1 全部72章"
+  },
+  "dimensions": [
+    {
+      "id": "domain",
+      "name": "领域维度",
+      "description": "按应用领域划分阀门类型",
+      "categories": [
+        {
+          "id": "domain-spaceflight",
+          "name": "航天阀门",
+          "children": [
+            {
+              "id": "domain-sf-launch",
+              "name": "运载火箭发动机阀门",
+              "related_chapters": [
+                1,
+                6,
+                7,
+                8,
+                25,
+                26
+              ]
+            },
+            {
+              "id": "domain-sf-upper",
+              "name": "上面级/航天器推进阀门",
+              "related_chapters": [
+                8,
+                9,
+                16
+              ]
+            },
+            {
+              "id": "domain-sf-deep",
+              "name": "深空探测器阀门",
+              "related_chapters": [
+                58,
+                62
+              ]
+            },
+            {
+              "id": "domain-sf-ground",
+              "name": "地面发射支持阀门",
+              "related_chapters": [
+                28
+              ]
+            }
+          ]
+        },
+        {
+          "id": "domain-aviation",
+          "name": "航空阀门",
+          "children": [
+            {
+              "id": "domain-av-engine",
+              "name": "航空发动机阀门",
+              "related_chapters": [
+                63,
+                68
+              ]
+            },
+            {
+              "id": "domain-av-fuel",
+              "name": "飞机燃油系统阀门",
+              "related_chapters": [
+                64,
+                68
+              ]
+            },
+            {
+              "id": "domain-av-hyd",
+              "name": "飞机液压系统阀门",
+              "related_chapters": [
+                65,
+                68
+              ]
+            },
+            {
+              "id": "domain-av-ecs",
+              "name": "ECS/环境控制阀门",
+              "related_chapters": [
+                66,
+                68
+              ]
+            },
+            {
+              "id": "domain-av-apu",
+              "name": "APU辅助动力阀门",
+              "related_chapters": [
+                66
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "function",
+      "name": "功能维度",
+      "description": "按阀门功能角色划分",
+      "categories": [
+        {
+          "id": "func-shutoff",
+          "name": "截止阀",
+          "children": [
+            {
+              "id": "func-so-isolation",
+              "name": "推进剂隔离阀",
+              "related_chapters": [
+                2,
+                6
+              ]
+            },
+            {
+              "id": "func-so-tank",
+              "name": "贮箱出口阀",
+              "related_chapters": [
+                3
+              ]
+            },
+            {
+              "id": "func-so-stage",
+              "name": "级间分离隔离阀",
+              "related_chapters": [
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "id": "func-throttling",
+          "name": "调节阀",
+          "children": [
+            {
+              "id": "func-th-thrust",
+              "name": "推力深度节流阀",
+              "related_chapters": [
+                7
+              ]
+            },
+            {
+              "id": "func-th-mixture",
+              "name": "混合比调节阀",
+              "related_chapters": [
+                7
+              ]
+            },
+            {
+              "id": "func-th-fmv",
+              "name": "燃油计量阀(FMV)",
+              "related_chapters": [
+                63
+              ]
+            }
+          ]
+        },
+        {
+          "id": "func-check",
+          "name": "单向阀",
+          "children": [
+            {
+              "id": "func-ck-pump",
+              "name": "泵出口防倒流单向阀",
+              "related_chapters": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": "func-ck-press",
+              "name": "增压单向阀",
+              "related_chapters": [
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "id": "func-relief",
+          "name": "泄压/安全阀",
+          "children": [
+            {
+              "id": "func-rf-tank",
+              "name": "贮箱安全阀",
+              "related_chapters": [
+                3
+              ]
+            },
+            {
+              "id": "func-rf-cabin",
+              "name": "座舱安全阀(正/负压)",
+              "related_chapters": [
+                66
+              ]
+            }
+          ]
+        },
+        {
+          "id": "func-servo",
+          "name": "伺服阀",
+          "children": [
+            {
+              "id": "func-sv-ehsv",
+              "name": "电液伺服阀(EHSV)",
+              "related_chapters": [
+                13,
+                65
+              ]
+            },
+            {
+              "id": "func-sv-ddv",
+              "name": "直驱阀(DDV)",
+              "related_chapters": [
+                13,
+                65
+              ]
+            },
+            {
+              "id": "func-sv-tvc",
+              "name": "推力矢量控制伺服阀",
+              "related_chapters": [
+                20
+              ]
+            }
+          ]
+        },
+        {
+          "id": "func-proportional",
+          "name": "比例阀",
+          "children": [
+            {
+              "id": "func-pr-brake",
+              "name": "防滑刹车比例阀",
+              "related_chapters": [
+                65
+              ]
+            },
+            {
+              "id": "func-pr-steer",
+              "name": "前轮转弯比例阀",
+              "related_chapters": [
+                65
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "actuation",
+      "name": "驱动维度",
+      "description": "按驱动方式划分",
+      "categories": [
+        {
+          "id": "act-solenoid",
+          "name": "电磁驱动",
+          "children": [
+            {
+              "id": "act-sl-direct",
+              "name": "直动电磁阀",
+              "related_chapters": [
+                6,
+                13
+              ]
+            },
+            {
+              "id": "act-sl-pilot",
+              "name": "先导电磁阀",
+              "related_chapters": [
+                6,
+                13
+              ]
+            },
+            {
+              "id": "act-sl-latching",
+              "name": "自锁电磁阀",
+              "related_chapters": [
+                6,
+                13
+              ]
+            }
+          ]
+        },
+        {
+          "id": "act-motor",
+          "name": "电机驱动",
+          "children": [
+            {
+              "id": "act-mt-bldc",
+              "name": "BLDC无刷电机驱动阀",
+              "related_chapters": [
+                6,
+                15
+              ]
+            },
+            {
+              "id": "act-mt-stepper",
+              "name": "步进电机驱动阀",
+              "related_chapters": [
+                6,
+                15
+              ]
+            },
+            {
+              "id": "act-mt-ema",
+              "name": "机电作动器(EMA)",
+              "related_chapters": [
+                65
+              ]
+            }
+          ]
+        },
+        {
+          "id": "act-fluid",
+          "name": "流体驱动",
+          "children": [
+            {
+              "id": "act-fl-pneumatic",
+              "name": "气动驱动阀(GHe/GN2)",
+              "related_chapters": [
+                6,
+                14
+              ]
+            },
+            {
+              "id": "act-fl-hydraulic",
+              "name": "液压驱动阀(3000/5000psi)",
+              "related_chapters": [
+                6,
+                14,
+                65
+              ]
+            },
+            {
+              "id": "act-fl-eha",
+              "name": "电静液作动器(EHA)",
+              "related_chapters": [
+                65
+              ]
+            }
+          ]
+        },
+        {
+          "id": "act-pyrotechnic",
+          "name": "火工/电爆驱动",
+          "children": [
+            {
+              "id": "act-py-norm",
+              "name": "常闭电爆阀",
+              "related_chapters": [
+                6,
+                16
+              ]
+            },
+            {
+              "id": "act-py-no",
+              "name": "常开电爆阀",
+              "related_chapters": [
+                6,
+                16
+              ]
+            }
+          ]
+        },
+        {
+          "id": "act-smart",
+          "name": "智能材料驱动",
+          "children": [
+            {
+              "id": "act-sm-piezo",
+              "name": "压电驱动阀",
+              "related_chapters": [
+                6,
+                53
+              ]
+            },
+            {
+              "id": "act-sm-sma",
+              "name": "形状记忆合金(SMA)阀",
+              "related_chapters": [
+                6,
+                53
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "medium",
+      "name": "介质维度",
+      "description": "按工作介质划分",
+      "categories": [
+        {
+          "id": "med-cryogenic",
+          "name": "低温推进剂",
+          "children": [
+            {
+              "id": "med-cr-lox",
+              "name": "液氧阀门(LOX, -183°C)",
+              "related_chapters": [
+                1,
+                4,
+                9
+              ]
+            },
+            {
+              "id": "med-cr-lh2",
+              "name": "液氢阀门(LH2, -253°C)",
+              "related_chapters": [
+                1,
+                4,
+                9
+              ]
+            },
+            {
+              "id": "med-cr-lch4",
+              "name": "液甲烷阀门(LCH4, -162°C)",
+              "related_chapters": [
+                1,
+                4
+              ]
+            }
+          ]
+        },
+        {
+          "id": "med-storable",
+          "name": "可贮存推进剂",
+          "children": [
+            {
+              "id": "med-st-nto",
+              "name": "NTO/四氧化二氮阀门",
+              "related_chapters": [
+                1,
+                4
+              ]
+            },
+            {
+              "id": "med-st-hydrazine",
+              "name": "肼类阀门(MMH/UDMH/N2H4)",
+              "related_chapters": [
+                1,
+                4,
+                60
+              ]
+            }
+          ]
+        },
+        {
+          "id": "med-aviation-fuel",
+          "name": "航空燃油",
+          "children": [
+            {
+              "id": "med-af-jeta",
+              "name": "Jet-A/JP-8航空煤油阀门",
+              "related_chapters": [
+                64
+              ]
+            },
+            {
+              "id": "med-af-gasoline",
+              "name": "航空汽油阀门",
+              "related_chapters": [
+                64
+              ]
+            }
+          ]
+        },
+        {
+          "id": "med-hydraulic",
+          "name": "液压油",
+          "children": [
+            {
+              "id": "med-hy-83282",
+              "name": "MIL-PRF-83282阻燃液压油",
+              "related_chapters": [
+                65
+              ]
+            },
+            {
+              "id": "med-hy-5606",
+              "name": "MIL-PRF-5606矿物基液压油",
+              "related_chapters": [
+                65
+              ]
+            }
+          ]
+        },
+        {
+          "id": "med-gas",
+          "name": "气体介质",
+          "children": [
+            {
+              "id": "med-ga-press",
+              "name": "高压氦/氮增压阀",
+              "related_chapters": [
+                3
+              ]
+            },
+            {
+              "id": "med-ga-bleed",
+              "name": "发动机引气阀(200-650°C)",
+              "related_chapters": [
+                66
+              ]
+            },
+            {
+              "id": "med-ga-ngs",
+              "name": "NGS富氮空气惰化阀",
+              "related_chapters": [
+                64
+              ]
+            }
+          ]
+        },
+        {
+          "id": "med-green",
+          "name": "绿色推进剂",
+          "children": [
+            {
+              "id": "med-gr-han",
+              "name": "HAN基推进剂阀门",
+              "related_chapters": [
+                57,
+                60
+              ]
+            },
+            {
+              "id": "med-gr-adn",
+              "name": "ADN基推进剂阀门",
+              "related_chapters": [
+                57,
+                60
+              ]
+            },
+            {
+              "id": "med-gr-h2o2",
+              "name": "过氧化氢阀门",
+              "related_chapters": [
+                57,
+                60
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "environment",
+      "name": "环境维度",
+      "description": "按工作环境极端条件划分",
+      "categories": [
+        {
+          "id": "env-cryo",
+          "name": "极低温环境",
+          "children": [
+            {
+              "id": "env-cr-lh2",
+              "name": "液氢温度(20K/-253°C)",
+              "related_chapters": [
+                4,
+                9
+              ]
+            },
+            {
+              "id": "env-cr-lox",
+              "name": "液氧温度(90K/-183°C)",
+              "related_chapters": [
+                4,
+                9
+              ]
+            }
+          ]
+        },
+        {
+          "id": "env-high-temp",
+          "name": "高温环境",
+          "children": [
+            {
+              "id": "env-ht-turbine",
+              "name": "涡轮排气(>800°C)",
+              "related_chapters": [
+                63
+              ]
+            },
+            {
+              "id": "env-ht-prebur",
+              "name": "预燃室燃气(>1000°C)",
+              "related_chapters": [
+                7,
+                8
+              ]
+            },
+            {
+              "id": "env-ht-fire",
+              "name": "防火区域(1100°C/15min)",
+              "related_chapters": [
+                68
+              ]
+            }
+          ]
+        },
+        {
+          "id": "env-high-pressure",
+          "name": "高压环境",
+          "children": [
+            {
+              "id": "env-hp-pump",
+              "name": "泵出口高压(>35MPa)",
+              "related_chapters": [
+                7
+              ]
+            },
+            {
+              "id": "env-hp-hyd",
+              "name": "航空液压高压(5000psi/350bar)",
+              "related_chapters": [
+                65
+              ]
+            }
+          ]
+        },
+        {
+          "id": "env-vacuum",
+          "name": "真空/空间环境",
+          "children": [
+            {
+              "id": "env-va-outgas",
+              "name": "真空出气/冷焊防护",
+              "related_chapters": [
+                9,
+                62
+              ]
+            },
+            {
+              "id": "env-va-radiation",
+              "name": "空间辐射环境",
+              "related_chapters": [
+                58
+              ]
+            }
+          ]
+        },
+        {
+          "id": "env-vibration",
+          "name": "振动/冲击环境",
+          "children": [
+            {
+              "id": "env-vb-engine",
+              "name": "发动机宽带随机+窄带正弦振动",
+              "related_chapters": [
+                63,
+                68
+              ]
+            },
+            {
+              "id": "env-vb-launch",
+              "name": "火箭发射冲击振动",
+              "related_chapters": [
+                8,
+                12
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "system",
+      "name": "系统维度",
+      "description": "按所属子系统划分",
+      "categories": [
+        {
+          "id": "sys-propulsion",
+          "name": "推进系统",
+          "children": [
+            {
+              "id": "sys-pr-main",
+              "name": "主推进剂阀门",
+              "related_chapters": [
+                6,
+                7,
+                8
+              ]
+            },
+            {
+              "id": "sys-pr-thrust",
+              "name": "推力控制阀门",
+              "related_chapters": [
+                7
+              ]
+            },
+            {
+              "id": "sys-pr-prebur",
+              "name": "预燃室阀门",
+              "related_chapters": [
+                7,
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sys-fuel",
+          "name": "飞机燃油系统",
+          "children": [
+            {
+              "id": "sys-fu-boost",
+              "name": "增压关断阀",
+              "related_chapters": [
+                64
+              ]
+            },
+            {
+              "id": "sys-fu-crossfeed",
+              "name": "交输供油阀",
+              "related_chapters": [
+                64
+              ]
+            },
+            {
+              "id": "sys-fu-jettison",
+              "name": "应急放油阀",
+              "related_chapters": [
+                64
+              ]
+            },
+            {
+              "id": "sys-fu-ngs",
+              "name": "NGS惰化阀",
+              "related_chapters": [
+                64
+              ]
+            },
+            {
+              "id": "sys-fu-refuel",
+              "name": "空中加油受油阀",
+              "related_chapters": [
+                64
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sys-hydraulic",
+          "name": "飞机液压系统",
+          "children": [
+            {
+              "id": "sys-hy-servo",
+              "name": "电液伺服阀(EHSV/DDV)",
+              "related_chapters": [
+                13,
+                65
+              ]
+            },
+            {
+              "id": "sys-hy-brake",
+              "name": "刹车控制阀",
+              "related_chapters": [
+                65
+              ]
+            },
+            {
+              "id": "sys-hy-landing",
+              "name": "起落架控制阀",
+              "related_chapters": [
+                65
+              ]
+            },
+            {
+              "id": "sys-hy-priority",
+              "name": "优先阀/压力补偿阀",
+              "related_chapters": [
+                65
+              ]
+            }
+          ]
+        },
+        {
+          "id": "sys-ecs",
+          "name": "环境控制系统(ECS)",
+          "children": [
+            {
+              "id": "sys-ec-prsov",
+              "name": "压力调节关断阀(PRSOV)",
+              "related_chapters": [
+                66
+              ]
+            },
+            {
+              "id": "sys-ec-fcv",
+              "name": "流量控制阀(FCV)",
+              "related_chapters": [
+                66
+              ]
+            },
+            {
+              "id": "sys-ec-ofv",
+              "name": "座舱外流阀(OFV)",
+              "related_chapters": [
+                66
+              ]
+            },
+            {
+              "id": "sys-ec-antiice",
+              "name": "防冰引气阀",
+              "related_chapters": [
+                66
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
