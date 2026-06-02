@@ -19,7 +19,8 @@ export default defineConfig({
     ['meta', { name: 'keywords', content: '航空航天,阀门,研发设计,知识库,系统工程,流体力学,密封工程,可靠性工程' }],
     ['meta', { property: 'og:title', content: 'Avis - 航空航天阀门研发智库' }],
     ['meta', { property: 'og:description', content: '全球航空航天阀门领域知识体系的活的大厦 — 60万+字 · 57章 · 200+参考文献' }],
-    ['meta', { property: 'og:type', content: 'website' }]
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['link', { rel: 'stylesheet', href: '/apple-theme.css' }]
   ],
 
   themeConfig: {
@@ -49,6 +50,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '手册', link: '/guide/part1-index' },
       { text: '知识图谱', link: '/knowledge-graph' },
+      { text: '知识网络', link: '/public/knowledge-network.html' },
       { text: '术语词典', link: '/glossary' },
       { text: '版本历史', link: '/changelog' },
       { text: '系统架构', link: '/architecture' },
