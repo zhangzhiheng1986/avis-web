@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avis 知识网络 — 交互式可视化</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+/* ========== CSS Custom Properties ========== */
+:root {
+  --bg-primary: #FAFAFA;
+  --bg-secondary: rgba(255,255,255,0.72);
+  --text-primary: #1D1D1F;
+  --text-secondary: #86868B;
+  --text-tertiary: #AEAEB2;
+  --border-color: rgba(0,0,0,0.08);
+  --shadow: 0 4px 16px rgba(0,0,0,0.08);
+  --glass-bg: rgba(255,255,255,0.72);
+  --glass-border: rgba(0,0,0,0.08);
+  --canvas-bg: #FAFAFA;
+  --node-stroke: #FFFFFF;
+  --link-default: rgba(0,0,0,0.10);
+  --link-highlight: rgba(0,0,0,0.45);
+  --input-bg: rgba(0,0,0,0.04);
+  --input-border: rgba(0,0,0,0.12);
+  --hover-glow: rgba(0,0,0,0.06);
+  --accent: #007AFF;
+  --cluster-ring: rgba(0,0,0,0.06);
+}
+
+.dark {
+  --bg-primary: #1C1C1E;
+  --bg-secondary: rgba(44,44,46,0.72);
+  --text-primary: #F5F5F7;
+  --text-secondary: #98989D;
+  --text-tertiary: #636366;
+  --border-color: rgba(255,255,255,0.10);
+  --shadow: 0 4px 16px rgba(0,0,0,0.40);
+  --glass-bg: rgba(44,44,46,0.72);
+  --glass-border: rgba(255,255,255,0.10);
+  --canvas-bg: #1C1C1E;
+  --node-stroke: #2C2C2E;
+  --link-default: rgba(255,255,255,0.06);
+  --link-highlight: rgba(255,255,255,0.35);
+  --input-bg: rgba(255,255,255,0.06);
+  --input-border: rgba(255,255,255,0.12);
+  --hover-glow: rgba(255,255,255,0.06);
+  --accent: #0A84FF;
+  --cluster-ring: rgba(255,255,255,0.08);
+}
+
+/* ========== Base ========== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+  height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+#container {
+  display: flex;
+  height: 100vh;
+}
+
+/* ========== Sidebar — Glass Morphism ========== */
+#sidebar {
+  width: 320px;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-right: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  z-index: 10;
+  position: relative;
+}
+
+#sidebar-header {
+  padding: 18px 20px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+
+#sidebar-header h1 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--input-bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, border-color 0.3s;
+  flex-shrink: 0;
+}
+
+#theme-toggle:hover {
+  background: var(--hover-glow);
+}
+
+#theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-secondary);
+  fill: none;
+  stroke-width: 1.8;
+  transition: stroke 0.3s;
+}
+
+#theme-toggle .icon-sun { display: none; }
+#theme-toggle .icon-moon { display: block; }
+.dark #theme-toggle .icon-sun { display: block; }
+.dark #theme-toggle .icon-moon { display: none; }
+
+/* Search */
+#search-box {
+  margin: 12px 16px;
+  position: relative;
+}
+
+#search-box input {
+  width: 100%;
+  padding: 8px 12px 8px 32px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+#search-box input:focus {
+  border-color: var(--accent);
+}
+
+#search-box .search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  stroke: var(--text-tertiary);
+  fill: none;
+  stroke-width: 1.6;
+  pointer-events: none;
+}
+
+/* Stats */
+#stats {
+  padding: 6px 20px 10px;
+  font-size: 11px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+#stats span {
+  margin-right: 14px;
+}
+
+#stats .stat-val {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Legend */
+#legend {
+  padding: 12px 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+#legend h3 {
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.legend-color {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  flex: 1;
+}
+
+.legend-full {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-left: 6px;
+}
+
+/* Info panel */
+#info-panel {
+  flex: 1;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border-color);
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+#info-panel .panel-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.1s ease, transform 0.1s ease;
+}
+
+#info-panel .panel-content.fading {
+  opacity: 0;
+  transform: translateY(4px);
+}
+
+#info-panel h3 {
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#info-panel p {
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+#info-panel .meta-row {
+  display: flex;
+  gap: 12px;
+  margin: 10px 0;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+#info-panel .meta-row span {
+  background: var(--input-bg);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+#info-panel a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+#info-panel a:hover {
+  text-decoration: underline;
+}
+
+#info-panel .placeholder {
+  color: var(--text-tertiary);
+  font-style: italic;
+  text-align: center;
+  padding-top: 40px;
+}
+
+/* ========== Main Canvas ========== */
+#main-canvas {
+  flex: 1;
+  position: relative;
+  background: var(--canvas-bg);
+  transition: background 0.4s ease;
+}
+
+#main-canvas svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ========== Tooltip — Glass Morphism ========== */
+#tooltip {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.9);
+  background: var(--glass-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 10px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  max-width: 240px;
+  z-index: 100;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+#tooltip.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#tooltip .tt-label {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+#tooltip .tt-desc {
+  color: var(--text-secondary);
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+#tooltip .tt-meta {
+  color: var(--text-tertiary);
+  font-size: 10px;
+}
+
+/* ========== Zoom hints ========== */
+#zoom-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  background: var(--glass-bg);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 6px 16px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 5;
+}
+
+#zoom-hint.show { opacity: 1; }
+
+/* ========== Node glow for search ========== */
+.node-glow {
+  filter: drop-shadow(0 0 6px var(--glow-color, rgba(0,122,255,0.5)));
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* ========== Focus ring for keyboard nav ========== */
+.node-focus circle {
+  stroke: var(--accent) !important;
+  stroke-width: 3px !important;
+  transition: stroke 0.2s, stroke-width 0.2s;
+}
+</style>
+</head>
+<body>
+
+<div id="container">
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div id="sidebar-header">
+      <h1>知识网络</h1>
+      <button id="theme-toggle" title="切换主题" aria-label="切换深色/浅色模式">
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+
+    <div id="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-input" placeholder="搜索章节..." autocomplete="off">
+    </div>
+
+    <div id="stats">
+      <span>节点 <strong class="stat-val" id="stat-nodes">62</strong></span>
+      <span>边 <strong class="stat-val" id="stat-edges">83</strong></span>
+      <span>缩放 <strong class="stat-val" id="stat-zoom">1.0x</strong></span>
+    </div>
+
+    <div id="legend">
+      <h3>六编图例</h3>
+    </div>
+
+    <div id="info-panel">
+      <div class="panel-content placeholder">点击节点查看详情</div>
+    </div>
+  </aside>
+
+  <!-- Canvas -->
+  <div id="main-canvas">
+    <div id="zoom-hint">缩小以查看聚类视图</div>
+  </div>
+</div>
+
+<!-- Tooltip -->
+<div id="tooltip"></div>
+
+<script>
+/* ================================================================
+   Avis Knowledge Network — D3.js Interactive Visualization
+   Apple Human Interface Guidelines Design
+   ================================================================ */
+
+// ─── Constants ───────────────────────────────────────────────
+const PART_COLORS = {
+  1: '#007AFF', 2: '#FF9500', 3: '#34C759',
+  4: '#FF2D55', 5: '#AF52DE', 6: '#5AC8FA'
+};
+
+const PART_COLORS_RGBA = {
+  1: 'rgba(0,122,255,0.18)', 2: 'rgba(255,149,0,0.18)', 3: 'rgba(52,199,89,0.18)',
+  4: 'rgba(255,45,85,0.18)', 5: 'rgba(175,82,222,0.18)', 6: 'rgba(90,200,250,0.18)'
+};
+
+const PART_COLORS_RGBA_DARK = {
+  1: 'rgba(10,132,255,0.22)', 2: 'rgba(255,159,10,0.22)', 3: 'rgba(50,215,91,0.22)',
+  4: 'rgba(255,69,99,0.22)', 5: 'rgba(191,90,242,0.22)', 6: 'rgba(100,210,255,0.22)'
+};
+
+const PART_NAMES = {
+  1: '第一编 基础理论', 2: '第二编 设计工程',
+  3: '第三编 验证标准', 4: '第四编 管理前瞻',
+  5: '第五编 新兴技术', 6: '第六编 电子航天'
+};
+
+const RELATION_LABELS = {
+  precursor: '前置知识',
+  followup: '深化拓展',
+  reference: '交叉引用',
+  deepen: '深度关联',
+  contrast: '对比对照'
+};
+
+const RELATION_STYLES = {
+  precursor:  { light: { stroke: '#546E7A', dash: '0',   width: 1.8 }, dark: { stroke: '#90A4AE', dash: '0',   width: 1.8 } },
+  followup:   { light: { stroke: '#546E7A', dash: '6,3', width: 1.4 }, dark: { stroke: '#90A4AE', dash: '6,3', width: 1.4 } },
+  reference:  { light: { stroke: '#90A4AE', dash: '4,3', width: 1.0 }, dark: { stroke: '#B0BEC5', dash: '4,3', width: 1.0 } },
+  deepen:     { light: { stroke: '#7B1FA2', dash: '0',   width: 1.4 }, dark: { stroke: '#CE93D8', dash: '0',   width: 1.4 } },
+  contrast:   { light: { stroke: '#E65100', dash: '3,3', width: 1.6 }, dark: { stroke: '#FF8A65', dash: '3,3', width: 1.6 } }
+};
+
+const CLUSTER_THRESHOLD = 0.55;
+
+// ─── State ───────────────────────────────────────────────────
+let isDark = false;
+let isClustered = false;
+let currentZoom = 1;
+let selectedIndex = -1;
+let simulation, svg, gLinks, gNodes, gClusterLinks, gClusterNodes;
+let nodeData, linkData;
+let clusterCentroids = [];
+
+// ─── DOM refs ────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const sidebar = $('sidebar');
+const mainCanvas = $('main-canvas');
+const tooltip = $('tooltip');
+const searchInput = $('search-input');
+const infoPanel = $('info-panel').querySelector('.panel-content');
+const zoomHint = $('zoom-hint');
+const statNodes = $('stat-nodes');
+const statEdges = $('stat-edges');
+const statZoom = $('stat-zoom');
+const themeToggle = $('theme-toggle');
+const legendContainer = $('legend');
+
+// ─── Theme Management ────────────────────────────────────────
+function getSavedTheme() {
+  try { return localStorage.getItem('avis-theme'); } catch(e) { return null; }
+}
+
+function applyTheme(dark) {
+  isDark = dark;
+  document.documentElement.classList.toggle('dark', dark);
+  try { localStorage.setItem('avis-theme', dark ? 'dark' : 'light'); } catch(e) {}
+  updateAllColors();
+}
+
+function updateAllColors() {
+  const lk = isDark ? 'dark' : 'light';
+
+  // Update link styles
+  if (gLinks) {
+    gLinks.selectAll('line').each(function(d) {
+      const style = RELATION_STYLES[d.relation] || RELATION_STYLES['precursor'];
+      const cs = style[lk];
+      d3.select(this)
+        .attr('stroke', cs.stroke)
+        .attr('stroke-width', cs.width)
+        .attr('stroke-dasharray', cs.dash);
+    });
+  }
+
+  if (gClusterLinks) {
+    gClusterLinks.selectAll('line')
+      .attr('stroke', isDark ? 'rgba(255,255,255,0.20)' : 'rgba(0,0,0,0.18)');
+  }
+
+  // Update cluster node fills
+  if (gClusterNodes) {
+    gClusterNodes.selectAll('.cluster-circle').each(function(d) {
+      d3.select(this).attr('fill', isDark ? PART_COLORS_RGBA_DARK[d.part] : PART_COLORS_RGBA[d.part]);
+    });
+  }
+}
+
+// ─── Initialize Theme ────────────────────────────────────────
+(function initTheme() {
+  const saved = getSavedTheme();
+  if (saved) {
+    applyTheme(saved === 'dark');
+  } else {
+    applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!getSavedTheme()) applyTheme(e.matches);
+  });
+})();
+
+themeToggle.addEventListener('click', () => applyTheme(!isDark));
+
+// ─── Build Legend ────────────────────────────────────────────
+function buildLegend() {
+  legendContainer.innerHTML = '<h3>六编图例</h3>';
+  for (let p = 1; p <= 6; p++) {
+    const div = document.createElement('div');
+    div.className = 'legend-item';
+    div.innerHTML = `<span class="legend-color" style="background:${PART_COLORS[p]}"></span><span class="legend-label">${PART_NAMES[p].split(' ')[0]}</span><span class="legend-full">${PART_NAMES[p].split(' ').slice(1).join(' ')}</span>`;
+    legendContainer.appendChild(div);
+  }
+}
+buildLegend();
+
+// ─── Data Loading ────────────────────────────────────────────
+async function loadData() {
+  const res = await fetch('/knowledge-graph-data.json');
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const data = await res.json();
+
+  nodeData = data.nodes.map(n => ({ ...n }));
+  linkData = data.edges.map(e => ({ ...e }));
+
+  // Compute clusters
+  computeClusterCentroids();
+}
+
+function nodeRadius(d) {
+  const rmap = { 5: 9, 4: 7, 3: 5.5, 2: 4.5 };
+  return rmap[d.importance] || 5;
+}
+
+// ─── Cluster Computation ─────────────────────────────────────
+function computeClusterCentroids() {
+  const groups = {};
+  nodeData.forEach(n => {
+    if (!groups[n.part]) groups[n.part] = [];
+    groups[n.part].push(n);
+  });
+
+  clusterCentroids = [];
+  for (let p = 1; p <= 6; p++) {
+    if (!groups[p]) continue;
+    const xs = groups[p].map(n => n.x || 0);
+    const ys = groups[p].map(n => n.y || 0);
+    clusterCentroids.push({
+      part: p,
+      cx: xs.reduce((a,b) => a+b, 0) / xs.length,
+      cy: ys.reduce((a,b) => a+b, 0) / ys.length,
+      count: groups[p].length
+    });
+  }
+}
+
+function computeClusterEdges() {
+  const partEdges = new Set();
+  linkData.forEach(e => {
+    const sp = nodeData.find(n => n.id === e.source || n.id === (typeof e.source === 'object' ? e.source.id : ''))?.part;
+    const tp = nodeData.find(n => n.id === e.target || n.id === (typeof e.target === 'object' ? e.target.id : ''))?.part;
+    if (sp && tp && sp !== tp) {
+      partEdges.add(`${Math.min(sp,tp)}-${Math.max(sp,tp)}`);
+    }
+  });
+  return Array.from(partEdges).map(key => {
+    const [a, b] = key.split('-').map(Number);
+    return { sourcePart: a, targetPart: b };
+  });
+}
+
+// ─── Tooltip ─────────────────────────────────────────────────
+function showTooltip(evt, d) {
+  const label = d.label || d.id;
+  const desc = d.description || '';
+  const part = d.part ? PART_NAMES[d.part] || `第${d.part}编` : '';
+  const imp = d.importance ? '★'.repeat(d.importance) : '';
+
+  tooltip.innerHTML = `
+    <div class="tt-label">${label}</div>
+    ${desc ? `<div class="tt-desc">${desc}</div>` : ''}
+    <div class="tt-meta">${part}${imp ? ' · ' + imp : ''}</div>
+  `;
+  tooltip.classList.add('visible');
+  positionTooltip(evt);
+}
+
+function positionTooltip(evt) {
+  const pad = 12;
+  let left = evt.clientX + pad;
+  let top = evt.clientY - 40;
+
+  const rect = tooltip.getBoundingClientRect();
+  if (left + rect.width > window.innerWidth - 20) {
+    left = evt.clientX - rect.width - pad;
+  }
+  if (top + rect.height > window.innerHeight - 20) {
+    top = evt.clientY - rect.height - pad;
+  }
+  if (top < 10) top = 10;
+  if (left < 10) left = 10;
+
+  tooltip.style.left = left + 'px';
+  tooltip.style.top = top + 'px';
+}
+
+function hideTooltip() {
+  tooltip.classList.remove('visible');
+}
+
+// ─── Info Panel ──────────────────────────────────────────────
+function updateInfoPanel(d) {
+  const content = infoPanel;
+  content.classList.add('fading');
+
+  setTimeout(() => {
+    content.innerHTML = `
+      <h3>${d.label || d.id}</h3>
+      <p>${d.description || '暂无描述'}</p>
+      <div class="meta-row">
+        <span>${PART_NAMES[d.part] || '第' + d.part + '编'}</span>
+        <span>重要度 ${'★'.repeat(d.importance || 0)}</span>
+      </div>
+      ${d.url ? `<a href="${d.url}" target="_blank">查看详情 →</a>` : ''}
+    `;
+    content.classList.remove('fading');
+  }, 120);
+}
+
+// ─── Search ──────────────────────────────────────────────────
+function handleSearch(term) {
+  const t = term.trim().toLowerCase();
+
+  if (!gNodes) return;
+
+  if (t === '') {
+    // Reset all
+    gNodes.selectAll('.node-group').each(function(d) {
+      const el = d3.select(this);
+      el.style('opacity', 1)
+        .attr('class', 'node-group');
+    });
+    gLinks.selectAll('line')
+      .style('opacity', null)
+      .attr('opacity', null);
+    return;
+  }
+
+  // Match nodes by label, id, description
+  const matchedIds = new Set();
+  nodeData.forEach(n => {
+    const hay = (n.label + ' ' + n.id + ' ' + (n.description || '')).toLowerCase();
+    if (hay.includes(t)) matchedIds.add(n.id);
+  });
+
+  // Match edges where either endpoint matches
+  const matchedEdgeIndices = new Set();
+  linkData.forEach((e, i) => {
+    const sid = typeof e.source === 'object' ? e.source.id : e.source;
+    const tid = typeof e.target === 'object' ? e.target.id : e.target;
+    if (matchedIds.has(sid) || matchedIds.has(tid)) matchedEdgeIndices.add(i);
+  });
+
+  // Apply styles
+  gNodes.selectAll('.node-group').each(function(d) {
+    const el = d3.select(this);
+    if (matchedIds.has(d.id)) {
+      const col = PART_COLORS[d.part];
+      el.style('opacity', 1)
+        .attr('class', 'node-group node-glow')
+        .style('--glow-color', col);
+    } else {
+      el.style('opacity', 0.06)
+        .attr('class', 'node-group')
+        .style('--glow-color', null);
+    }
+  });
+
+  gLinks.selectAll('line').each(function(d, i) {
+    if (matchedEdgeIndices.has(i)) {
+      d3.select(this).style('opacity', 0.6);
+    } else {
+      d3.select(this).style('opacity', 0.03);
+    }
+  });
+}
+
+searchInput.addEventListener('input', () => handleSearch(searchInput.value));
+
+// ─── Keyboard Navigation ─────────────────────────────────────
+function setupKeyboard() {
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+
+    const nodes = gNodes ? gNodes.selectAll('.node-group').nodes() : [];
+    const n = nodes.length;
+
+    switch (e.key) {
+      case 'Tab':
+        e.preventDefault();
+        if (e.shiftKey) {
+          selectedIndex = (selectedIndex - 1 + n) % n;
+        } else {
+          selectedIndex = (selectedIndex + 1) % n;
+        }
+        highlightFocusedNode();
+        break;
+      case 'Enter':
+        e.preventDefault();
+        if (selectedIndex >= 0 && selectedIndex < n) {
+          const d = d3.select(nodes[selectedIndex]).datum();
+          updateInfoPanel(d);
+        }
+        break;
+      case '+':
+      case '=':
+        e.preventDefault();
+        zoomBy(1.3);
+        break;
+      case '-':
+        e.preventDefault();
+        zoomBy(0.7);
+        break;
+      case 'Escape':
+        selectedIndex = -1;
+        clearFocus();
+        searchInput.value = '';
+        handleSearch('');
+        break;
+    }
+  });
+}
+
+function highlightFocusedNode() {
+  if (!gNodes) return;
+  gNodes.selectAll('.node-group').classed('node-focus', false);
+  if (selectedIndex >= 0) {
+    gNodes.selectAll('.node-group').filter((d, i) => i === selectedIndex)
+      .classed('node-focus', true);
+  }
+}
+
+function clearFocus() {
+  selectedIndex = -1;
+  if (gNodes) gNodes.selectAll('.node-group').classed('node-focus', false);
+}
+
+function zoomBy(factor) {
+  if (!svg) return;
+  const t = d3.zoomTransform(svg.node());
+  const newK = Math.max(0.15, Math.min(4, t.k * factor));
+  svg.transition().duration(300).call(
+    d3.zoom().transform,
+    d3.zoomIdentity.translate(t.x, t.y).scale(newK)
+  );
+}
+
+// ─── Main Visualization ──────────────────────────────────────
+async function init() {
+  await loadData();
+
+  const width = mainCanvas.clientWidth;
+  const height = mainCanvas.clientHeight;
+
+  // SVG
+  svg = d3.select('#main-canvas').append('svg')
+    .attr('width', width)
+    .attr('height', height);
+
+  // Defs for glow filter
+  const defs = svg.append('defs');
+  const filter = defs.append('filter').attr('id', 'glow');
+  filter.append('feGaussianBlur').attr('stdDeviation', '2.5').attr('result', 'blur');
+  const merge = filter.append('feMerge');
+  merge.append('feMergeNode').attr('in', 'blur');
+  merge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+  // Main group
+  const g = svg.append('g');
+
+  // Cluster layers (always in DOM, toggled)
+  gClusterLinks = g.append('g').attr('class', 'cluster-links').style('display', 'none');
+  gClusterNodes = g.append('g').attr('class', 'cluster-nodes').style('display', 'none');
+
+  // Detail layers
+  gLinks = g.append('g').attr('class', 'links');
+  gNodes = g.append('g').attr('class', 'nodes');
+
+  // Force simulation
+  simulation = d3.forceSimulation(nodeData)
+    .force('link', d3.forceLink(linkData).id(d => d.id).distance(60))
+    .force('charge', d3.forceManyBody().strength(-160))
+    .force('center', d3.forceCenter(width / 2, height / 2))
+    .force('collide', d3.forceCollide().radius(d => nodeRadius(d) + 4));
+
+  // Draw links
+  const linkEls = gLinks.selectAll('line')
+    .data(linkData)
+    .join('line')
+    .attr('stroke', d => {
+      const style = RELATION_STYLES[d.relation] || RELATION_STYLES['precursor'];
+      return style[isDark ? 'dark' : 'light'].stroke;
+    })
+    .attr('stroke-width', d => {
+      const style = RELATION_STYLES[d.relation] || RELATION_STYLES['precursor'];
+      return style[isDark ? 'dark' : 'light'].width;
+    })
+    .attr('stroke-dasharray', d => {
+      const style = RELATION_STYLES[d.relation] || RELATION_STYLES['precursor'];
+      return style[isDark ? 'dark' : 'light'].dash;
+    })
+    .attr('stroke-opacity', 0.4)
+    .style('opacity', 0);
+
+  // Draw nodes
+  const nodeGroups = gNodes.selectAll('.node-group')
+    .data(nodeData)
+    .join('g')
+    .attr('class', 'node-group')
+    .style('opacity', 0)
+    .style('cursor', 'pointer');
+
+  // Node circles
+  nodeGroups.append('circle')
+    .attr('r', d => nodeRadius(d))
+    .attr('fill', d => PART_COLORS[d.part])
+    .attr('stroke', 'var(--node-stroke)')
+    .attr('stroke-width', 2);
+
+  // Node labels: "Ch. XX" + "中文简称"
+  nodeGroups.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', d => nodeRadius(d) + 10)
+    .attr('font-size', 9)
+    .attr('font-family', 'inherit')
+    .attr('fill', 'var(--text-secondary)')
+    .attr('pointer-events', 'none')
+    .each(function(d) {
+      const parts = d.label.split(' ');
+      const ch = parts[0] || '';
+      const cn = parts.slice(1).join(' ') || '';
+      const el = d3.select(this);
+      el.append('tspan').attr('x', 0).attr('dy', 0).text(ch);
+      if (cn) el.append('tspan').attr('x', 0).attr('dy', 11).text(cn);
+    });
+
+  // Interactions
+  nodeGroups
+    .on('mouseenter', function(evt, d) {
+      d3.select(this).select('circle')
+        .transition().duration(150)
+        .attr('r', nodeRadius(d) * 1.35);
+      showTooltip(evt, d);
+    })
+    .on('mousemove', (evt) => positionTooltip(evt))
+    .on('mouseleave', function(evt, d) {
+      d3.select(this).select('circle')
+        .transition().duration(150)
+        .attr('r', nodeRadius(d));
+      hideTooltip();
+    })
+    .on('click', function(evt, d) {
+      evt.stopPropagation();
+      updateInfoPanel(d);
+      // Update selected index for keyboard nav
+      const idx = nodeData.indexOf(d);
+      if (idx >= 0) selectedIndex = idx;
+      highlightFocusedNode();
+    });
+
+  // Click canvas to deselect
+  svg.on('click', () => {
+    clearFocus();
+    updateInfoPanelToPlaceholder();
+  });
+
+  // Simulation tick
+  simulation.on('tick', () => {
+    linkEls
+      .attr('x1', d => d.source.x)
+      .attr('y1', d => d.source.y)
+      .attr('x2', d => d.target.x)
+      .attr('y2', d => d.target.y);
+
+    nodeGroups.attr('transform', d => `translate(${d.x},${d.y})`);
+
+    // Update cluster centroids
+    computeClusterCentroids();
+    updateClusterPositions();
+  });
+
+  // Zoom
+  zoom = d3.zoom()
+    .scaleExtent([0.15, 4])
+    .on('zoom', (evt) => {
+      g.attr('transform', evt.transform);
+      currentZoom = evt.transform.k;
+      updateZoomStats();
+
+      if (currentZoom < CLUSTER_THRESHOLD && !isClustered) {
+        enterClusterMode();
+      } else if (currentZoom >= CLUSTER_THRESHOLD && isClustered) {
+        exitClusterMode();
+      }
+    });
+
+  svg.call(zoom);
+
+  // Entrance animation
+  // Start simulation with nodes initially all at center
+  nodeData.forEach(n => { n.x = width / 2; n.y = height / 2; });
+  simulation.alpha(1).restart();
+
+  // After a short delay for simulation to spread, fade in
+  setTimeout(() => {
+    nodeGroups.transition()
+      .duration(1000)
+      .ease(d3.easeCubicOut)
+      .style('opacity', 1);
+
+    linkEls.transition()
+      .delay(200)
+      .duration(800)
+      .ease(d3.easeCubicOut)
+      .style('opacity', 0.4);
+  }, 300);
+
+  // Build cluster visuals
+  buildClusterVisuals();
+
+  // Keyboard
+  setupKeyboard();
+
+  // Window resize
+  window.addEventListener('resize', () => {
+    const w = mainCanvas.clientWidth;
+    const h = mainCanvas.clientHeight;
+    svg.attr('width', w).attr('height', h);
+    simulation.force('center', d3.forceCenter(w / 2, h / 2));
+    simulation.alpha(0.3).restart();
+  });
+
+  updateZoomStats();
+}
+
+// ─── Cluster Mode ────────────────────────────────────────────
+function buildClusterVisuals() {
+  // Cluster edges
+  const cEdges = computeClusterEdges();
+  gClusterLinks.selectAll('line')
+    .data(cEdges)
+    .join('line')
+    .attr('stroke', isDark ? 'rgba(255,255,255,0.20)' : 'rgba(0,0,0,0.18)')
+    .attr('stroke-width', 2.5)
+    .attr('stroke-linecap', 'round');
+
+  // Cluster nodes
+  const cGroups = gClusterNodes.selectAll('.cluster-group')
+    .data(clusterCentroids)
+    .join('g')
+    .attr('class', 'cluster-group')
+    .style('cursor', 'pointer');
+
+  cGroups.append('circle')
+    .attr('class', 'cluster-circle')
+    .attr('r', 28)
+    .attr('fill', d => isDark ? PART_COLORS_RGBA_DARK[d.part] : PART_COLORS_RGBA[d.part])
+    .attr('stroke', d => PART_COLORS[d.part])
+    .attr('stroke-width', 2.5);
+
+  cGroups.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', 4)
+    .attr('font-size', 13)
+    .attr('font-weight', 600)
+    .attr('font-family', 'inherit')
+    .attr('fill', 'var(--text-primary)')
+    .attr('pointer-events', 'none')
+    .text(d => PART_NAMES[d.part].split(' ')[0]);
+
+  cGroups.append('text')
+    .attr('text-anchor', 'middle')
+    .attr('dy', 24)
+    .attr('font-size', 10)
+    .attr('font-family', 'inherit')
+    .attr('fill', 'var(--text-secondary)')
+    .attr('pointer-events', 'none')
+    .text(d => `${d.count} 章`);
+
+  // Cluster interactions
+  cGroups
+    .on('mouseenter', function(evt, d) {
+      d3.select(this).select('circle')
+        .transition().duration(150)
+        .attr('r', 34);
+      showTooltip(evt, {
+        label: PART_NAMES[d.part],
+        description: `包含 ${d.count} 个章节`,
+        part: d.part,
+        importance: 0
+      });
+    })
+    .on('mousemove', (evt) => positionTooltip(evt))
+    .on('mouseleave', function(evt, d) {
+      d3.select(this).select('circle')
+        .transition().duration(150)
+        .attr('r', 28);
+      hideTooltip();
+    })
+    .on('click', function(evt, d) {
+      evt.stopPropagation();
+      // Zoom to fit this cluster
+      const t = d3.zoomTransform(svg.node());
+      const scale = 0.6;
+      svg.transition().duration(400).call(
+        zoom.transform,
+        d3.zoomIdentity.translate(
+          width() / 2 - d.cx * scale,
+          height() / 2 - d.cy * scale
+        ).scale(scale)
+      );
+    });
+}
+
+function enterClusterMode() {
+  if (isClustered) return;
+  isClustered = true;
+
+  gNodes.transition().duration(300).style('opacity', 0)
+    .on('end', function() { gNodes.style('display', 'none'); });
+  gLinks.transition().duration(300).style('opacity', 0)
+    .on('end', function() { gLinks.style('display', 'none'); });
+
+  updateClusterPositions();
+  gClusterLinks.style('display', null).style('opacity', 0)
+    .transition().duration(300).style('opacity', 0.6);
+  gClusterNodes.style('display', null).style('opacity', 0)
+    .transition().duration(300).style('opacity', 1);
+
+  zoomHint.classList.add('show');
+  updateClusterStats();
+
+  // Update legend for keyboard nav
+  selectedIndex = -1;
+  clearFocus();
+}
+
+function exitClusterMode() {
+  if (!isClustered) return;
+  isClustered = true; // Prevent re-entry during transition
+
+  gClusterNodes.transition().duration(200).style('opacity', 0);
+  gClusterLinks.transition().duration(200).style('opacity', 0)
+    .on('end', function() {
+      gClusterNodes.style('display', 'none');
+      gClusterLinks.style('display', 'none');
+    });
+
+  gNodes.style('display', null).transition().duration(300).style('opacity', 1);
+  gLinks.style('display', null).transition().duration(300).style('opacity', 0.4);
+
+  zoomHint.classList.remove('show');
+  isClustered = false;
+
+  setTimeout(() => updateDetailStats(), 350);
+}
+
+function updateClusterPositions() {
+  if (!gClusterLinks || !gClusterNodes) return;
+
+  gClusterLinks.selectAll('line')
+    .attr('x1', d => {
+      const src = clusterCentroids.find(c => c.part === d.sourcePart);
+      return src ? src.cx : 0;
+    })
+    .attr('y1', d => {
+      const src = clusterCentroids.find(c => c.part === d.sourcePart);
+      return src ? src.cy : 0;
+    })
+    .attr('x2', d => {
+      const tgt = clusterCentroids.find(c => c.part === d.targetPart);
+      return tgt ? tgt.cx : 0;
+    })
+    .attr('y2', d => {
+      const tgt = clusterCentroids.find(c => c.part === d.targetPart);
+      return tgt ? tgt.cy : 0;
+    });
+
+  gClusterNodes.selectAll('.cluster-group')
+    .attr('transform', d => `translate(${d.cx},${d.cy})`);
+}
+
+// ─── Stats ───────────────────────────────────────────────────
+function updateZoomStats() {
+  statZoom.textContent = currentZoom.toFixed(1) + 'x';
+}
+
+function updateClusterStats() {
+  statNodes.textContent = '6';
+  statEdges.textContent = computeClusterEdges().length;
+  updateZoomStats();
+}
+
+function updateDetailStats() {
+  statNodes.textContent = nodeData.length;
+  statEdges.textContent = linkData.length;
+  updateZoomStats();
+}
+
+// ─── Helpers ─────────────────────────────────────────────────
+function width() { return mainCanvas.clientWidth; }
+function height() { return mainCanvas.clientHeight; }
+
+function updateInfoPanelToPlaceholder() {
+  const content = infoPanel;
+  content.classList.add('fading');
+  setTimeout(() => {
+    content.innerHTML = '<span class="placeholder">点击节点查看详情</span>';
+    content.classList.remove('fading');
+  }, 120);
+}
+
+// ─── Boot ────────────────────────────────────────────────────
+init().catch(err => {
+  console.error('Knowledge Network init failed:', err);
+  document.getElementById('main-canvas').innerHTML =
+    '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-secondary);font-size:14px;">知识网络加载失败，请刷新重试</div>';
+});
+</script>
+
+</body>
+</html>
