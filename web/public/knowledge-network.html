@@ -563,7 +563,7 @@ buildLegend();
 
 // ─── Data Loading ────────────────────────────────────────────
 async function loadData() {
-  const res = await fetch('/knowledge-graph-data.json');
+  const res = await fetch('knowledge-graph-data.json');
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
 
