@@ -1,8 +1,9 @@
 {
   "meta": {
-    "version": "6.1",
+    "version": "6.4",
     "created": "2026-06-03",
-    "description": "Avis知识图谱数据 — D3.js力导向图消费格式，整合valve-taxonomy与chapter-relationships",
+    "updated": "2026-06-04",
+    "description": "Avis知识图谱数据 — D3.js力导向图消费格式。v6.4: 补充ch38节点边关系、统一样式源为JSON唯一权威源。",
     "sources": [
       "knowledge-graph/ontology/valve-taxonomy.json",
       "knowledge-graph/cross-references/chapter-relationships.json"
@@ -48,6 +49,7 @@
     {"id": "ch35", "label": "Ch.35 测试鉴定", "part": 3, "importance": 4, "url": "/guide/part3/chapter-35", "description": "鉴定试验矩阵、环境试验、功能性能试验、寿命试验"},
     {"id": "ch36", "label": "Ch.36 中国标准", "part": 3, "importance": 3, "url": "/guide/part3/chapter-36", "description": "CCAR/GJB体系、适航审定流程、型号合格取证"},
     {"id": "ch37", "label": "Ch.37 系统工程管理", "part": 4, "importance": 4, "url": "/guide/part4/chapter-37", "description": "技术评审TRR/PDR/CDR、技术状态管理、风险管理"},
+    {"id": "ch38", "label": "Ch.38 项目管理", "part": 4, "importance": 3, "url": "/guide/part4/chapter-38", "description": "项目计划与控制、WBS工作分解、资源调度、挣值管理EVM"},
     {"id": "ch39", "label": "Ch.39 质量保证", "part": 4, "importance": 3, "url": "/guide/part4/chapter-39", "description": "AS9100/ISO 9001、首件检验FAI、统计过程控制SPC"},
     {"id": "ch40", "label": "Ch.40 数字化工程", "part": 4, "importance": 3, "url": "/guide/part4/chapter-40", "description": "PLM/MBD/MBE、BOM管理、工程变更、数据追溯"},
     {"id": "ch41", "label": "Ch.41 数字孪生", "part": 4, "importance": 4, "url": "/guide/part4/chapter-41", "description": "数字孪生架构、实时数据驱动、故障预测、剩余寿命评估"},
@@ -124,8 +126,11 @@
     {"source": "ch33", "target": "ch36", "relation": "followup"},
     {"source": "ch31", "target": "ch35", "relation": "precursor"},
     {"source": "ch35", "target": "ch67", "relation": "reference"},
+    {"source": "ch37", "target": "ch38", "relation": "precursor"},
     {"source": "ch37", "target": "ch39", "relation": "precursor"},
     {"source": "ch37", "target": "ch40", "relation": "precursor"},
+    {"source": "ch38", "target": "ch39", "relation": "precursor"},
+    {"source": "ch38", "target": "ch40", "relation": "precursor"},
     {"source": "ch39", "target": "ch40", "relation": "precursor"},
     {"source": "ch40", "target": "ch41", "relation": "precursor"},
     {"source": "ch41", "target": "ch45", "relation": "precursor"},
@@ -156,21 +161,70 @@
     {"source": "ch36", "target": "ch48", "relation": "deepen"},
     {"source": "ch02", "target": "ch63", "relation": "contrast"},
     {"source": "ch04", "target": "ch68", "relation": "contrast"},
-    {"source": "ch09", "target": "ch66", "relation": "contrast"}
+    {"source": "ch09", "target": "ch66", "relation": "contrast"},
+    {"source": "ch38", "target": "ch60", "relation": "reference"},
+    {"source": "ch38", "target": "ch47", "relation": "reference"},
+    {"source": "ch38", "target": "ch46", "relation": "reference"}
   ],
   "partColors": {
-    "1": "#e1f5fe",
-    "2": "#fff3e0",
-    "3": "#e8f5e9",
-    "4": "#fce4ec",
-    "5": "#f3e5f5",
-    "6": "#e0f2f1"
+    "1": "#007AFF",
+    "2": "#FF9500",
+    "3": "#34C759",
+    "4": "#FF2D55",
+    "5": "#AF52DE",
+    "6": "#5AC8FA"
+  },
+  "partColorsRgba": {
+    "1": "rgba(0,122,255,0.18)",
+    "2": "rgba(255,149,0,0.18)",
+    "3": "rgba(52,199,89,0.18)",
+    "4": "rgba(255,45,85,0.18)",
+    "5": "rgba(175,82,222,0.18)",
+    "6": "rgba(90,200,250,0.18)"
+  },
+  "partColorsRgbaDark": {
+    "1": "rgba(10,132,255,0.22)",
+    "2": "rgba(255,159,10,0.22)",
+    "3": "rgba(50,215,91,0.22)",
+    "4": "rgba(255,69,99,0.22)",
+    "5": "rgba(191,90,242,0.22)",
+    "6": "rgba(100,210,255,0.22)"
+  },
+  "partNames": {
+    "1": "第一编 基础理论",
+    "2": "第二编 设计工程",
+    "3": "第三编 验证标准",
+    "4": "第四编 管理前瞻",
+    "5": "第五编 新兴技术",
+    "6": "第六编 电子航天"
   },
   "relationStyles": {
-    "precursor": {"stroke": "#546e7a", "dash": "0", "width": 2},
-    "followup": {"stroke": "#546e7a", "dash": "5,5", "width": 1.5},
-    "reference": {"stroke": "#90a4ae", "dash": "5,5", "width": 1},
-    "deepen": {"stroke": "#7b1fa2", "dash": "0", "width": 1.5},
-    "contrast": {"stroke": "#e65100", "dash": "3,3", "width": 2}
+    "precursor": {
+      "light": {"stroke": "#546E7A", "dash": "0", "width": 1.8},
+      "dark": {"stroke": "#90A4AE", "dash": "0", "width": 1.8}
+    },
+    "followup": {
+      "light": {"stroke": "#546E7A", "dash": "6,3", "width": 1.4},
+      "dark": {"stroke": "#90A4AE", "dash": "6,3", "width": 1.4}
+    },
+    "reference": {
+      "light": {"stroke": "#90A4AE", "dash": "4,3", "width": 1.0},
+      "dark": {"stroke": "#B0BEC5", "dash": "4,3", "width": 1.0}
+    },
+    "deepen": {
+      "light": {"stroke": "#7B1FA2", "dash": "0", "width": 1.4},
+      "dark": {"stroke": "#CE93D8", "dash": "0", "width": 1.4}
+    },
+    "contrast": {
+      "light": {"stroke": "#E65100", "dash": "3,3", "width": 1.6},
+      "dark": {"stroke": "#FF8A65", "dash": "3,3", "width": 1.6}
+    }
+  },
+  "relationLabels": {
+    "precursor": "前置知识",
+    "followup": "深化拓展",
+    "reference": "交叉引用",
+    "deepen": "深度关联",
+    "contrast": "对比对照"
   }
 }
