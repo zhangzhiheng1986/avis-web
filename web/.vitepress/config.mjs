@@ -50,7 +50,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '手册', link: '/guide/part1-index' },
       { text: '知识图谱', link: '/knowledge-graph' },
-      { text: '知识网络', link: '/public/knowledge-network.html' },
+      { text: '知识网络', link: '/knowledge-network.html' },
       { text: '术语词典', link: '/glossary' },
       { text: '版本历史', link: '/changelog' },
       { text: '系统架构', link: '/architecture' },
@@ -205,12 +205,12 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/avis-aerospace/avis-web/edit/main/:path',
+      pattern: 'https://github.com/Avis8888/Avis/edit/master/web/:path',
       text: '在 GitHub 上编辑此页'
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/avis-aerospace/avis-web' }
+      { icon: 'github', link: 'https://github.com/Avis8888/Avis' }
     ]
   },
 
