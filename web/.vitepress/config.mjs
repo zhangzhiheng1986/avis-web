@@ -15,10 +15,13 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', href: '/logo.svg' }],
+    ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
+    ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon-180x180.png' }],
+    ['link', { rel: 'manifest', href: '/site.webmanifest' }],
     ['meta', { name: 'author', content: '小贤' }],
     ['meta', { name: 'keywords', content: '航空航天,阀门,研发设计,知识库,系统工程,流体力学,密封工程,可靠性工程' }],
     ['meta', { property: 'og:title', content: 'Avis - 航空航天阀门研发智库' }],
-    ['meta', { property: 'og:description', content: '全球航空航天阀门领域知识体系的活的大厦 — 60万+字 · 57章 · 200+参考文献' }],
+    ['meta', { property: 'og:description', content: '全球航空航天阀门领域知识体系的活的大厦 — 60万+字 · 65章 · 5附录 · 200+参考文献' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['link', { rel: 'stylesheet', href: '/apple-theme.css' }]
   ],

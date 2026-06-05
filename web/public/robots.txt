@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://avis8888.github.io/Avis/sitemap.xml
